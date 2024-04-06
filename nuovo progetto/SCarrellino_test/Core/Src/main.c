@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "can.h"
+#include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -26,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
 #include "string.h"
+#include "i2c-lcd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,32 +59,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-CAN_RxHeaderTypeDef   RxHeader;
-CAN_TxHeaderTypeDef   TxHeader;
-uint32_t              txmailbox;
-uint8_t               RxData[3];
 
-void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan1){
-          HAL_UART_Transmit(&huart2, (uint8_t *)"urrà\n\r", strlen("urrà\n\r"), HAL_MAX_DELAY);
-
-}
-
-
-/*
-void (CAN_HandleTypeDef  *hcan1)
-{
-  if (HAL_CAN_GetRxMessage(&hcan1, CAN_RX_FIFO0, &RxHeader, RxData) != HAL_OK)
-  {
-    HAL_UART_Transmit(&huart2, (uint8_t *)"errore ricezione\n\r", strlen("errore ricezione\n\r"), HAL_MAX_DELAY);
-    Error_Handler();
-  }
-  else{
-        HAL_UART_Transmit(&huart2, (uint8_t *)"messaggio ricevuto\n\r", strlen("messaggio ricevuto\n\r"), HAL_MAX_DELAY);
-
-  }
   
-  }
-  */
 /* USER CODE END 0 */
 
 /**
@@ -102,90 +80,47 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
-  // variabili per la CAN
-  uint8_t dati[3] = {4, 6, 7};
-  uint8_t datirx[3];
-  uint8_t id  = 0x03;
-  uint32_t rxfifo;
-
-
-
-
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+#define lcd_address 0x27<<1 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_CAN1_Init();
   MX_USART2_UART_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
-// attivazione
-if(HAL_CAN_Start(&hcan1) != HAL_OK){
-    Error_Handler();
-  }
-  else( HAL_UART_Transmit(&huart2, (uint8_t *)"\n\rCAN pronta\n\r", strlen("\n\rCAN pronta\n\r"), HAL_MAX_DELAY));
 
-// attivazione interrupt Rx
-if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
-  {
-    HAL_UART_Transmit(&huart2, (uint8_t *)"errore attivazione IT\n\r", strlen("errore attivazione IT\n\r"), HAL_MAX_DELAY);
-	  Error_Handler();
-  }
+  if(HAL_I2C_IsDeviceReady(&hi2c1, lcd_address, 100,HAL_MAX_DELAY) != HAL_OK){
   
-
-
-TxHeader.DLC = 3;
-TxHeader.IDE = CAN_ID_STD;
-TxHeader.StdId = id;
-TxHeader.ExtId = 0;
-TxHeader.RTR = CAN_RTR_DATA;
-TxHeader.TransmitGlobalTime = DISABLE;
-
-
-
-    
-
-//while (HAL_CAN_GetState(&hcan1) != HAL_CAN_STATE_READY);
-while (HAL_CAN_GetTxMailboxesFreeLevel(&hcan1) == 0);
-
-
-//invio messaggio can
-if (HAL_CAN_AddTxMessage(&hcan1, &TxHeader, &dati[0], &txmailbox) != HAL_OK){
-       
-        Error_Handler();
-    }
-
-// verifica invio
-while(HAL_CAN_IsTxMessagePending(&hcan1, txmailbox) != 0);
-char msg[30];
-sprintf(msg, "messaggio trasmesso \n\r");
-HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg),HAL_MAX_DELAY);
-
-
-while (HAL_CAN_GetRxFifoFillLevel (&hcan1, CAN_RX_FIFO1) == 0);
-while (HAL_CAN_GetRxFifoFillLevel (&hcan1, CAN_RX_FIFO0) == 0);
-
-
-//  ricezione can
-/*while (HAL_CAN_GetRxFifoFillLevel(&hcan1, CAN_RX_FIFO0) == 0);
-
-if (HAL_CAN_GetRxMessage(&hcan1, rxFIFO, &RxHeader, datirx) != HAL_OK){
-  HAL_UART_Transmit(&huart2, (uint8_t *)"errore in ricezione CAN\n\r", strlen("errore in ricezione CAN\n\r"),HAL_MAX_DELAY);
   Error_Handler();
-}
+   }
+   else{HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
+   }
 
-char rxmsg[30];
-sprintf( rxmsg, "id : %lu, dati : %d, %d ,%d\n", RxHeader.StdId, datirx[0], datirx[1], datirx[2]);
-HAL_UART_Transmit(&huart2, (uint8_t *)"messaggio ricevuto: ", strlen("messaggio ricevuto: "),HAL_MAX_DELAY);
-HAL_UART_Transmit(&huart2, (uint8_t *)rxmsg, strlen(rxmsg),HAL_MAX_DELAY);
-*/
+
+
+  //lcd_init();
+  
+//0111111111111 con 0b11111111   0b11111111110
+//0101111111110 con 0b11111110
+//0111111111100 con 0b11111100
+//0111111111000 con 0b11111000
+//0100001111000 con {0b11111110, 0b000}
+
+//clear schermo
+  uint8_t dati = 0b1000 ;
+  HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)dati, sizeof(dati), HAL_MAX_DELAY);
+ //uint8_t buffer_prova = 0b000;
+  //HAL_I2C_Master_Transmit(&hi2c1,lcd_address, &buffer_prova, sizeof(buffer_prova), HAL_MAX_DELAY);
+
+
 
   /* USER CODE END 2 */
 
