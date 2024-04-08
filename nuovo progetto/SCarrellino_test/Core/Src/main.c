@@ -48,6 +48,13 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+#define lcd_address 0x27<<1 
+uint8_t comando_h ;   // 4 MSB
+  uint8_t comando_l ; // 4 LSB
+  uint8_t maschera_h_en1 ; // parte alta del comando con enable 1 in modalità scrittura comando
+  uint8_t maschera_h_en0; // parte alta del comando con enable 0 in modalità scrittura comando
+  uint8_t maschera_l_en1; // parte bassa del comando con enable 1 in modalità scrittura comando
+  uint8_t maschera_l_en0 ; // parte b
 
 /* USER CODE END PV */
 
@@ -59,7 +66,37 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void my_lcd_cmd(uint8_t cmd){
+   comando_h = cmd&0xF0;   // 4 MSB
+   comando_l = (cmd&0x0F)<<4; // 4 LSB
+   maschera_h_en1 = comando_h | 0b1100; // parte alta del comando con enable 1 in modalità scrittura comando
+   maschera_h_en0 = comando_h | 0b1000; // parte alta del comando con enable 0 in modalità scrittura comando
+   maschera_l_en1 = comando_l | 0b1100; // parte bassa del comando con enable 1 in modalità scrittura comando
+   maschera_l_en0 = comando_l | 0b1000; // parte bassa del comando con enable 0 in modalità scrittura comando
 
+
+  HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)maschera_h_en1, sizeof(maschera_h_en1), HAL_MAX_DELAY);
+  HAL_Delay(1);
+  HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)maschera_h_en0, sizeof(maschera_h_en0), HAL_MAX_DELAY);
+  HAL_Delay(2);
+
+  HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)maschera_l_en1, sizeof(maschera_l_en1), HAL_MAX_DELAY);
+  HAL_Delay(1);
+  HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)maschera_l_en0, sizeof(maschera_l_en0), HAL_MAX_DELAY);
+  HAL_Delay(5);
+}
+
+void my_lcd_init(void){
+
+  HAL_Delay(20);
+  my_lcd_cmd (0x02);	/* 4bit mode */
+	my_lcd_cmd (0x28);	/* Initialization of 16X2 LCD in 4bit mode */
+	my_lcd_cmd (0x0C);	/* Display ON Cursor OFF */
+	my_lcd_cmd (0x06);	/* Auto Increment cursor */
+	my_lcd_cmd (0x01);	/* Clear display */
+	my_lcd_cmd (0x80);	/* Cursor at home position */
+
+}
   
 /* USER CODE END 0 */
 
@@ -76,7 +113,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+  //HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -86,7 +123,6 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-#define lcd_address 0x27<<1 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -115,10 +151,13 @@ int main(void)
 //0100001111000 con {0b11111110, 0b000}
 
 //clear schermo
-  uint8_t dati = 0b1000 ;
-  HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)dati, sizeof(dati), HAL_MAX_DELAY);
+ // uint8_t dati = 0b1000 ;
+  //HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)dati, sizeof(dati), HAL_MAX_DELAY);
  //uint8_t buffer_prova = 0b000;
   //HAL_I2C_Master_Transmit(&hi2c1,lcd_address, &buffer_prova, sizeof(buffer_prova), HAL_MAX_DELAY);
+
+my_lcd_init();
+//HAL_I2C_Master_Transmit(&hi2c1,lcd_address, (uint8_t *)0b1100, sizeof(0b1100), HAL_MAX_DELAY);
 
 
 

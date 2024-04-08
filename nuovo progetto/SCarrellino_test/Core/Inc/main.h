@@ -36,7 +36,8 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+void my_lcd_cmd(uint8_t cmd);
+void my_lcd_init(void);
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
