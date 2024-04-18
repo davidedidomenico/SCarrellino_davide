@@ -37,9 +37,11 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Core/Src/ECU_level_functions.c \
+Core/Src/I2C_LCD.c \
+Core/Src/I2C_LCD_cfg.c \
+Core/Src/Util.c \
 Core/Src/can.c \
 Core/Src/gpio.c \
-Core/Src/i2c-lcd.c \
 Core/Src/i2c.c \
 Core/Src/main.c \
 Core/Src/stm32f4xx_hal_msp.c \
