@@ -167,14 +167,12 @@ void I2C_LCD_WriteChar(uint8_t I2C_LCD_InstanceIndex, char Ch)
 
 void I2C_LCD_WriteString(uint8_t I2C_LCD_InstanceIndex, char *Str)
 {
-   
     while (*Str)
     {
        
         I2C_LCD_Data(I2C_LCD_InstanceIndex, *Str++);
     }
 }
-
 
 void I2C_LCD_ShiftLeft(uint8_t I2C_LCD_InstanceIndex)
 {
@@ -262,4 +260,6 @@ void I2C_LCD_ACapo(uint8_t I2C_LCD_InstanceIndex){
     raw ++;
     I2C_LCD_SetCursor(I2C_LCD_InstanceIndex, 0, raw);
 }
+
+
 

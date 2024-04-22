@@ -43,4 +43,5 @@ void I2C_LCD_CreateCustomChar(uint8_t I2C_LCD_InstanceIndex, uint8_t CharIndex, 
 void I2C_LCD_PrintCustomChar(uint8_t I2C_LCD_InstanceIndex, uint8_t CharIndex);
 void I2C_LCD_ACapo(uint8_t I2C_LCD_InstanceIndex);
 
+
 #endif /* I2C_LCD_H_ */

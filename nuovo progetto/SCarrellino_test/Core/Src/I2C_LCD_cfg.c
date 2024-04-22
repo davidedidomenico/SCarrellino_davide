@@ -21,7 +21,7 @@ const I2C_LCD_CfgType I2C_LCD_CfgParam[I2C_LCD_MAX] =
 		I2C_LCD,	/* Index of I2C_LCD Instance #1           */
 		&hi2c1,		/* Hardware I2C Module's Handle           */
 		0x27,		/* Hardware I2C_LCD Device Address        */
-		16,			/* LCD Columns Count                      */
-		2			/* LCD Rows Count                         */
+		20,			/* LCD Columns Count                      */
+		4			/* LCD Rows Count                         */
 	}
 };

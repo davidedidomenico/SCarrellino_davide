@@ -98,7 +98,15 @@ int main(void)
   I2C_LCD_WriteString(MyI2C_LCD, "Ciao Fransy");
   I2C_LCD_ACapo(MyI2C_LCD);
   HAL_Delay(100);
-  I2C_LCD_WriteString(MyI2C_LCD, "Sto andando avanti col progetto");
+  I2C_LCD_WriteString(MyI2C_LCD, "Sto andando avanti ");
+  I2C_LCD_ACapo(MyI2C_LCD);
+  I2C_LCD_WriteString(MyI2C_LCD, "col progetto");
+  I2C_LCD_ACapo(MyI2C_LCD);
+
+  I2C_LCD_WriteString(MyI2C_LCD, "come va?");
+
+
+
   
 
   
