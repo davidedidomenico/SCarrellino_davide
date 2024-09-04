@@ -1,0 +1,289 @@
+//******************************BUSMASTER Messages and signals Database ******************************//
+
+[DATABASE_VERSION] 1.3
+
+[PROTOCOL] CAN
+
+[BUSMASTER_VERSION] [3.2.2]
+[NUMBER_OF_MESSAGES] 29
+[START_MSG] Sens_Front_1,5,8,4,0,S,sens_front
+[START_SIGNALS] Throttle_0_Voltage_mV,16,1,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Throttle_1_Voltage_mV,16,3,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Steering_Voltage_mV,16,5,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Brake_Straingauge_Voltage_mV,16,7,0,U,65535,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Front_2,16,6,3,0,S,sens_front
+[START_SIGNALS] Pot_FL_Voltage_mV,16,1,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Pot_FR_Voltage_mV,16,3,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] BrakePressure_Voltage_mV,16,5,0,U,65535,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Rear_1,17,6,3,0,S,sens_rear
+[START_SIGNALS] Pot_RL_Voltage_mV,16,1,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Pot_RR_Voltage_RR,16,3,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] BrakePressure_Rear_Voltage_mV,16,5,0,U,65535,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] TLB_Battery_ShutStatus,18,3,9,0,S,tlb_bat
+[START_SIGNALS] isShutClosed_preAMS_IMD_Latch,1,1,0,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_postAMSLatch,1,1,1,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_postIMDLatch,1,1,2,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutdownClosed_preTLBBattFinal,1,1,3,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] isAMSErrorLatched,1,1,4,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] isIMDErrorLatched,1,1,5,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] isSdPrchRlyClosed,1,1,6,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] ShutdownADC_postSDPrechargeRelay,8,2,0,U,2179.49,0,1,0,0.117,V,,dspace
+[START_SIGNALS] ShutdownADC_AIRsOpeningDelayCaps,8,3,0,U,2179.49,0,1,0,0.117,V,,dspace
+[END_MSG]
+
+[START_MSG] TLB_Battery_TSALStatus,19,3,17,0,S,tlb_bat
+[START_SIGNALS] TSAL_isGreenON,1,1,0,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] TSAL_isAIRPosClosed,1,1,1,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] TSAL_IsAIRNegClosed,1,1,2,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] TSAL_IsRelayPrechargeClosed,1,1,3,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] TSAL_isDCBusOver60V,1,1,4,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] IntentionalState_AIRPos,1,1,5,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] IntentionalState_AIRNeg,1,1,6,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] IntentionalState_RelayPrecharge,1,1,7,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] SCS_Short2GND_AirPos,1,2,0,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] SCS_Short2GND_AirNeg,1,2,1,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] SCS_isAnyShort2GND_Present,1,2,2,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] Imp_isAnyImp_Present,1,2,3,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] Imp_isAIRPosImp_Present,1,2,4,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] Imp_isAIRNegImp_Present,1,2,5,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] Imp_isRelayPrechargeImp_Present,1,2,6,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] Imp_isDCBusVoltageImp_Present,1,2,7,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] Imp_isAnyImp_Latched,1,3,0,U,1,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] BMSLV_Helo,20,8,1,0,S,bms_lv
+[START_SIGNALS] time,64,1,0,U,1.84467e+19,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Front_Helo,21,8,1,0,S,bms_lv
+[START_SIGNALS] time,64,1,0,U,1.84467e+19,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Rear_Helo,22,8,1,0,S,bms_lv
+[START_SIGNALS] time,64,1,0,U,1.84467e+19,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Steering_Helo,23,8,1,0,S,bms_lv
+[START_SIGNALS] time,64,1,0,U,1.84467e+19,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] TLB_Battery_Helo,24,8,1,0,S,bms_lv
+[START_SIGNALS] time,64,1,0,U,1.84467e+19,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] dSpaxe_Helo,25,8,1,0,S,bms_lv
+[START_SIGNALS] time,64,1,0,U,1.84467e+19,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] dSpace_RTD_ACK,37,1,1,0,S,dspace
+[START_SIGNALS] RTD_FSM_STATE,8,1,0,I,6,-1,1,0,1,,,dash
+[END_MSG]
+
+[START_MSG] Steering_RTD,38,1,1,0,S,dash
+[START_SIGNALS] RTD_CMD,8,1,0,U,255,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Rear_ShutdownStatus,48,1,5,0,S,sens_rear
+[START_SIGNALS] isShutClosed_postBSPD,1,1,0,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_preFunghi,1,1,1,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_postInvMono,1,1,2,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_postInvFR,1,1,3,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] isBSPDinError,1,1,4,I,1,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Front_ShutdownStatus,49,1,4,0,S,sens_front
+[START_SIGNALS] isShutClosed_preInertia,1,1,0,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_postInertia,1,1,1,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_postBOTS,1,1,2,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] isShutClosed_postCockpit,1,1,3,I,1,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] BMSLV_RelayOverride,255,2,2,0,S,dspace
+[START_SIGNALS] password,15,1,0,U,65535,0,1,0,1,,,bms_lv
+[START_SIGNALS] close_relay,1,2,7,U,1,0,1,0,1,,,bms_lv
+[END_MSG]
+
+[START_MSG] BMSLV_CellVoltage1,256,8,4,0,S,bms_lv
+[START_SIGNALS] Cell_1_Voltage_mV,16,1,0,U,65535,0,1,2000,0.038,,,dspace
+[START_SIGNALS] Cell_2_Voltage_mV,16,3,0,U,65535,0,1,2000,0.038,,,dspace
+[START_SIGNALS] Cell_3_Voltage_mV,16,5,0,U,65535,0,1,2000,0.038,,,dspace
+[START_SIGNALS] Cell_4_Voltage_mV,16,7,0,U,65535,0,1,2000,0.038,,,dspace
+[END_MSG]
+
+[START_MSG] BMSLV_CellVoltage2,257,6,3,0,S,bms_lv
+[START_SIGNALS] Cell_5_Voltage_mV,16,1,0,U,65535,0,1,2000,0.038,,,dspace
+[START_SIGNALS] Cell_6_Voltage_mV,16,3,0,U,65535,0,1,2000,0.038,,,dspace
+[START_SIGNALS] Cell_7_Voltage_mV,16,5,0,U,65535,0,1,2000,0.038,,,dspace
+[END_MSG]
+
+[START_MSG] BMSLV_BatteryPackGeneral,258,6,3,0,S,bms_lv
+[START_SIGNALS] Current_Sensor_mV,16,1,0,U,65535,0,1,0,0.076,,,dspace
+[START_SIGNALS] LV_Total_Voltage_mV,16,3,0,U,65535,0,1,14000,0.267,,,dspace
+[START_SIGNALS] LV_Total_Voltage_Sum_mV,16,5,0,U,65535,0,1,14000,0.267,,,dspace
+[END_MSG]
+
+[START_MSG] BMSLV_Status,259,4,27,0,S,bms_lv
+[START_SIGNALS] isRelayOpen,1,1,0,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell1_OV,1,1,1,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell2_OV,1,1,2,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell3_OV,1,1,3,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell4_OV,1,1,4,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell5_OV,1,1,5,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell6_OV,1,1,6,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell7_OV,1,1,7,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell1_UV,1,2,0,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell2_UV,1,2,1,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell3_UV,1,2,2,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell4_UV,1,2,3,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell5_UV,1,2,4,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell6_UV,1,2,5,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] cell7_UV,1,2,6,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp1_OT,1,2,7,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp2_OT,1,3,0,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp3_OT,1,3,1,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp4_OT,1,3,2,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp5_OT,1,3,3,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp6_OT,1,3,4,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp7_OT,1,3,5,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp8_OT,1,3,6,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp9_OT,1,3,7,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp10_OT,1,4,0,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp11_OT,1,4,1,U,1,0,1,0,1,,,dspace
+[START_SIGNALS] temp12_OT,1,4,2,U,1,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] BMSLV_Temp1,260,8,6,0,S,bms_lv
+[START_SIGNALS] NTC1_Resistance,10,1,1,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC2_Resistance,10,2,3,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC3_Resistance,10,3,5,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC4_Resistance,10,4,7,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC5_Resistance,10,6,1,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC6_Resistance,10,7,6,U,1023,0,1,1000,31.25,Ohm,,dspace
+[END_MSG]
+
+[START_MSG] BMSLV_Temp2,261,8,6,0,S,bms_lv
+[START_SIGNALS] NTC1_Resistance,10,1,1,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC2_Resistance,10,2,3,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC3_Resistance,10,3,5,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC4_Resistance,10,4,7,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC5_Resistance,10,6,1,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC6_Resistance,10,7,6,U,1023,0,1,1000,31.25,Ohm,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Front_3,288,8,4,0,S,sens_front
+[START_SIGNALS] Straingauge_PushFR_Voltage_mV,16,1,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Straingauge_TieFR_Voltage_mV,16,3,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Straingauge_PushFL_Voltage_mV,16,5,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Straingauge_TieFL_Voltage_mV,16,7,0,U,65535,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Rear_3,289,8,4,0,S,sens_rear
+[START_SIGNALS] Straingauge_PushRR_Voltage_mV,16,1,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Straingauge_TieRR_Voltage_mV,16,3,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Straingauge_PushRL_Voltage_mV,16,5,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] Straingauge_TieRL_Voltage_mV,16,7,0,U,65535,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] dSpace_PeripheralsCTRL,512,3,3,0,S,dspace
+[START_SIGNALS] BrakeLightON_CTRL,1,1,0,I,1,0,1,0,1,,,dash
+[START_SIGNALS] RadFAN_PWM_CTRL,8,2,0,U,255,0,1,0,1,,,dash
+[START_SIGNALS] BattHVFan_CTRL,8,3,0,U,255,0,1,0,1,,,dash
+[END_MSG]
+
+[START_MSG] Sens_Front_NTC,1024,8,6,0,S,sens_front
+[START_SIGNALS] NTC_1_Resistance,10,1,0,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_2_Resistance,10,2,2,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_3_Resistance,10,3,4,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_4_Resistance,10,4,6,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_Spare1_Resistance,10,6,0,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_Spare2_Resistance,10,7,2,U,1023,0,1,1000,31.25,Ohm,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Rear_NTC,1025,8,6,0,S,sens_rear
+[START_SIGNALS] NTC_1_Resistance,10,1,0,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_2_Resistance,10,2,2,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_3_Resistance,10,3,4,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_4_Resistance,10,4,6,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_5_Resistance,10,6,0,U,1023,0,1,1000,31.25,Ohm,,dspace
+[START_SIGNALS] NTC_6_Resistance,10,7,2,U,1023,0,1,1000,31.25,Ohm,,dspace
+[END_MSG]
+
+[START_MSG] Sens_Rear_2,1026,4,2,0,S,sens_rear
+[START_SIGNALS] CoolingPressure_DX_Voltage_mV,16,1,0,U,65535,0,1,0,1,,,dspace
+[START_SIGNALS] CoolingPressure_SX_Voltage_mV,16,3,0,U,65535,0,1,0,1,,,dspace
+[END_MSG]
+
+[START_MSG] Steering_MotorControl_Debug,1280,1,4,0,S,dash
+[START_SIGNALS] FrontLeft_ON,1,1,0,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] FrontRight_ON,1,1,1,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] RearLeft_ON,1,1,2,I,1,0,1,0,1,,,dspace
+[START_SIGNALS] RearRight_ON,1,1,3,I,1,0,1,0,1,,,dspace
+[END_MSG]
+
+[NODE] sens_front,dspace,sens_rear,tlb_bat,bms_lv,dash
+[START_DESC]
+
+[START_DESC_MSG]
+5 S "(period: 10 ms)";
+16 S "(period: 10 ms)";
+17 S "(period: 10 ms)";
+18 S "(period: 100 ms)";
+19 S "(period: 100 ms)";
+20 S "";
+21 S "";
+22 S "(period: 10 ms)";
+23 S "";
+24 S "";
+25 S "";
+37 S "";
+38 S "(period: 500 ms)";
+48 S "(period: 10 ms)";
+49 S "(period: 10 ms)";
+255 S "";
+256 S "(period: 100 ms)";
+257 S "(period: 100 ms)";
+258 S "(period: 100 ms)";
+259 S "(period: 100 ms)";
+260 S "(period: 2000 ms)";
+261 S "(period: 2000 ms)";
+288 S "(period: 10 ms)";
+289 S "(period: 10 ms)";
+512 S "";
+1024 S "(period: 10 ms)";
+1025 S "(period: 10 ms)";
+1026 S "(period: 10 ms)";
+1280 S "";
+[END_DESC_MSG]
+[START_DESC_NODE]
+[END_DESC_NODE]
+[START_DESC_SIG]
+[END_DESC_SIG]
+[END_DESC]
+
+[START_PARAM]
+[START_PARAM_NET]
+[END_PARAM_NET]
+[START_PARAM_NODE]
+[END_PARAM_NODE]
+[START_PARAM_MSG]
+"GenMsgCycleTime",INT,0,1000
+"GenMsgSendType",ENUM,"NoMsgSendType","Cyclic","IfActive","CyclicIfActive","NotUsed"
+[END_PARAM_MSG]
+[START_PARAM_SIG]
+"GenSigStartValue",FLOAT,0,100000000000,0
+"GenSigSendType",ENUM,"NoSigSendType","Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NotUsed",NoSigSendType
+[END_PARAM_SIG]
+[START_PARAM_VAL]
+[START_PARAM_NODE_VAL]
+[END_PARAM_NODE_VAL]
+[START_PARAM_MSG_VAL]
+[END_PARAM_MSG_VAL]
+[START_PARAM_SIG_VAL]
+[END_PARAM_SIG_VAL]
+[END_PARAM_VAL]

@@ -1,0 +1,992 @@
+//******************************BUSMASTER Messages and signals Database ******************************//
+
+[DATABASE_VERSION] 1.3
+
+[PROTOCOL] CAN
+
+[BUSMASTER_VERSION] [3.2.2]
+[NUMBER_OF_MESSAGES] 62
+[START_MSG] DSPACE__timeAndDate,23,6,7,0,S,DSPACE
+[START_SIGNALS] DATETIME_year,8,1,0,U,255,0,1,0,1,,,DASH,SB_FRONT,SB_REAR,SCANNER,TLB_BAT,BMS_LV
+[START_SIGNALS] DATETIME_month,4,2,0,U,11,0,1,0,1,,,DASH,SB_FRONT,SB_REAR,SCANNER,TLB_BAT,BMS_LV
+[START_SIGNALS] DATETIME_day,5,2,4,U,31,1,1,0,1,,,DASH,SB_FRONT,SB_REAR,SCANNER,TLB_BAT,BMS_LV
+[START_SIGNALS] DATETIME_hours,5,3,1,U,23,0,1,0,1,h,,DASH,SB_FRONT,SB_REAR,SCANNER,TLB_BAT,BMS_LV
+[START_SIGNALS] DATETIME_minutes,6,3,6,U,59,0,1,0,1,min,,DASH,SB_FRONT,SB_REAR,SCANNER,TLB_BAT,BMS_LV
+[START_SIGNALS] DATETIME_seconds,6,4,4,U,59,0,1,0,1,sec,,DASH,SB_FRONT,SB_REAR,SCANNER,TLB_BAT,BMS_LV
+[START_SIGNALS] DATETIME_houndresOfASeconds,7,5,2,U,99,0,1,0,1,sec,,DASH,SB_FRONT,SB_REAR,SCANNER,TLB_BAT,BMS_LV
+[END_MSG]
+
+[START_MSG] TLB_BAT__signalsStatus,65,4,15,0,S,TLB_BAT
+[START_SIGNALS] AIR_POS_cmd_isActive,1,1,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] AIR_POS_isClosed,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] AIR_NEG_cmd_isActive,1,1,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] AIR_NEG_isClosed,1,1,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] DCBUS_PRECH_RLY_cmd_isActive,1,1,4,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] DCBUS_PRECH_RLY_isClosed,1,1,5,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] AMS_err_isActive,1,1,6,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] IMD_err_isActive,1,1,7,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TSAL_green_isActive,1,2,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] DCBUS_isOver60V,1,2,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] IMP_any_isActive,1,2,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] IMP_HV_RelaysState_isActive,1,2,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] IMP_DCBUS_isActive,1,2,4,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] AIR_POS_STG_mechStateSignal_isActive,1,2,5,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] AIR_NEG_STG_mechStateSignal_isActive,1,2,6,U,1,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_FRONT__analogDevice,82,7,4,0,S,SB_FRONT
+[START_SIGNALS] APPS_0_voltage,10,1,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] APPS_1_voltage,10,2,2,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] STEER_RME_voltage,16,3,4,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] BRAKE_PRESS_FRONT_voltage,16,5,4,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_REAR__analogDevice,99,6,3,0,S,SB_REAR
+[START_SIGNALS] COOL_PRESS_LEFT_voltage,16,1,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] COOL_PRESS_RIGHT_voltage,16,3,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] BRAKE_PRESS_REAR_voltage,16,5,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_REAR__criticalPeripherals,115,1,2,0,S,SB_REAR
+[START_SIGNALS] DISCHARGE_isActive,1,1,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] BSPD_hasError,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] BMS_LV__lvBatGeneral,324,6,3,0,S,BMS_LV
+[START_SIGNALS] LV_BAT_currentSensVoltage,16,1,0,U,65535,0,1,0,0.076,mV,,DSPACE,SCANNER
+[START_SIGNALS] LV_BAT_voltage,16,3,0,U,65535,0,1,14000,0.267,mV,,DSPACE,SCANNER
+[START_SIGNALS] LV_BAT_summedVoltage,16,5,0,U,65535,0,1,14000,0.267,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] DASH__hmiDevicesState,357,2,7,0,S,DASH
+[START_SIGNALS] BTN_RTD_isPressed,1,1,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] BTN_1_isPressed,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] BTN_2_isPressed,1,1,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] BTN_3_isPressed,1,1,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] BTN_4_isPressed,1,1,4,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] ROT_SW_1_state,4,2,0,U,9,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] ROT_SW_2_state,4,2,4,U,9,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] DSPACE__peripheralsCTRL,407,3,4,0,S,DSPACE
+[START_SIGNALS] BRAKE_LIGHT_activeCMD,1,1,0,U,1,0,1,0,1,,,DASH,SB_REAR,SCANNER
+[START_SIGNALS] DASH_SDC_RLY_closeCMD,1,1,1,U,1,0,1,0,1,,,DASH,SCANNER
+[START_SIGNALS] RAD_FAN_pwmDutyCicleCtrl,8,2,0,U,100,0,1,0,1,%,,DASH,SB_REAR,SCANNER
+[START_SIGNALS] COOL_PUMPS_speedCtrl,8,3,0,U,100,0,1,0,1,%,,DASH,SB_REAR,SCANNER
+[END_MSG]
+
+[START_MSG] DIAG_TOOL__xcpTxBMS_LV,646,8,1,0,S,DIAG_TOOL
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,BMS_LV
+[END_MSG]
+
+[START_MSG] DIAG_TOOL__xcpTxDASH,662,8,1,0,S,DIAG_TOOL
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,DASH
+[END_MSG]
+
+[START_MSG] DIAG_TOOL__xcpTxSB_REAR,678,8,1,0,S,DIAG_TOOL
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,SB_REAR
+[END_MSG]
+
+[START_MSG] DIAG_TOOL__xcpTxSB_FRONT,694,8,1,0,S,DIAG_TOOL
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,SB_FRONT
+[END_MSG]
+
+[START_MSG] DIAG_TOOL__xcpTxSCANNER,710,8,1,0,S,DIAG_TOOL
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,SCANNER
+[END_MSG]
+
+[START_MSG] DIAG_TOOL__xcpTxTLB_BAT,726,8,1,0,S,DIAG_TOOL
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,TLB_BAT
+[END_MSG]
+
+[START_MSG] TLB_BAT__SDCsensingStatus,737,3,6,0,S,TLB_BAT
+[START_SIGNALS] SDC_TSAC_initialIn_isActive,1,1,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_post_AMS_IMD_relay_isActive,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_TSAC_finalIn_isActive,1,1,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_PrechBypassRelay_isClosed,1,1,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_TSAC_initialIn_voltage,8,1,4,U,1440.68,0,1,0,0.177,V,,DSPACE,SCANNER
+[START_SIGNALS] SDC_TSAC_finalIn_voltage,8,2,4,U,1440.68,0,1,0,0.177,V,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_REAR__SDCsensingStatus,755,1,4,0,S,SB_REAR
+[START_SIGNALS] SDC_POST_BSPD_isClosed,1,1,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_PRE_PUSH_BTNS_isClosed,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_POST_DC_BUS_isClosed,1,1,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_POST_INV_FR_isClosed,1,1,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_FRONT__SDCsensingStatus,770,1,3,0,S,SB_FRONT
+[START_SIGNALS] SDC_POST_INERTIA_isActive,1,1,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_POST_BOTS_isActive,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] SDC_POST_CP_PUSH_BTN_isActive,1,1,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_FRONT__potentiometer,802,4,2,0,S,SB_FRONT
+[START_SIGNALS] LPPS_DAMPER_FL_voltage,16,1,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] LPPS_DAMPER_FR_voltage,16,3,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_REAR__potentiometer,819,4,2,0,S,SB_REAR
+[START_SIGNALS] LPPS_DAMPER_RL_voltage,16,1,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] LPPS_DAMPER_RR_voltage,16,3,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] IMU__Accelerometers,891,6,3,0,S,IMU
+[START_SIGNALS] ACCEL_X,16,1,0,I,32767,-32768,1,0,0.01,m.s-2,,
+[START_SIGNALS] ACCEL_Y,16,3,0,I,32767,-32768,1,0,0.01,m.s-2,,
+[START_SIGNALS] ACCEL_Z,16,5,0,I,32767,-32768,1,0,0.01,m.s-2,,
+[END_MSG]
+
+[START_MSG] IMU__Gyro,907,6,3,0,S,IMU
+[START_SIGNALS] GYRO_X,16,1,0,I,32767,-32768,1,0,0.001,rad.s-1,,
+[START_SIGNALS] GYRO_Y,16,3,0,I,32767,-32768,1,0,0.001,rad.s-1,,
+[START_SIGNALS] GYRO_Z,16,5,0,I,32767,-32768,1,0,0.001,rad.s-1,,
+[END_MSG]
+
+[START_MSG] IMU__Euler,923,6,3,0,S,IMU
+[START_SIGNALS] ROLL,16,1,0,I,32767,-32768,1,0,0.0001,rad,,
+[START_SIGNALS] PITCH,16,3,0,I,32767,-32768,1,0,0.0001,rad,,
+[START_SIGNALS] YAW,16,5,0,I,32767,-32768,1,0,0.0001,rad,,
+[END_MSG]
+
+[START_MSG] IMU__GPS1_Position,939,8,2,0,S,IMU
+[START_SIGNALS] LATITUDE,32,1,0,I,2.14748e+09,-2.14748e+09,1,0,1E-7,�,,
+[START_SIGNALS] LONGITUDE,32,5,0,I,2.14748e+09,-2.14748e+09,1,0,1E-7,�,,
+[END_MSG]
+
+[START_MSG] IMU__VelocityBody,955,6,3,0,S,IMU
+[START_SIGNALS] VELOCITY_X,16,1,0,I,32767,-32768,1,0,0.01,m.s-1,,
+[START_SIGNALS] VELOCITY_Y,16,3,0,I,32767,-32768,1,0,0.01,m.s-1,,
+[START_SIGNALS] VELOCITY_Z,16,5,0,I,32767,-32768,1,0,0.01,m.s-1,,
+[END_MSG]
+
+[START_MSG] IMU__TrackSlipCurv,971,7,4,0,S,IMU
+[START_SIGNALS] ANGLE_TRACK,16,1,0,I,32767,-32768,1,0,0.0001,rad,,
+[START_SIGNALS] ANGLE_SLIP,16,3,0,I,32767,-32768,1,0,0.0001,rad,,
+[START_SIGNALS] CURVATURE_RADIUS,16,5,0,U,65535,0,1,0,0.01,m,,
+[START_SIGNALS] AUTO_STATUS,8,7,0,U,255,0,1,0,1,,,
+[END_MSG]
+
+[START_MSG] TLB_BAT__xcpTx,1121,8,1,0,S,TLB_BAT
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,DIAG_TOOL
+[END_MSG]
+
+[START_MSG] SB_FRONT__xcpTx,1122,8,1,0,S,SB_FRONT
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,DIAG_TOOL
+[END_MSG]
+
+[START_MSG] SB_REAR__xcpTx,1123,8,1,0,S,SB_REAR
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,DIAG_TOOL
+[END_MSG]
+
+[START_MSG] BMS_LV__xcpTx,1124,8,1,0,S,BMS_LV
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,DIAG_TOOL
+[END_MSG]
+
+[START_MSG] DASH__xcpTx,1125,8,1,0,S,DASH
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,DIAG_TOOL
+[END_MSG]
+
+[START_MSG] SCANNER__xcpTx,1129,8,1,0,S,SCANNER
+[START_SIGNALS] xcp_payload,64,1,0,U,0,0,1,0,1,,,DIAG_TOOL
+[END_MSG]
+
+[START_MSG] DSPACE__signals,1175,1,1,0,S,DSPACE
+[START_SIGNALS] HVBAT_soc,8,1,0,U,0,100,1,0,1,%,,DASH,SCANNER
+[END_MSG]
+
+[START_MSG] DSPACE__fsmStates,1191,5,5,0,S,DSPACE
+[START_SIGNALS] DSPACE_main_FSM_State,8,1,0,I,5,-1,1,0,1,,,DASH,SCANNER
+[VALUE_DESCRIPTION] "IDLE",0
+[VALUE_DESCRIPTION] "PRECHARGE",1
+[VALUE_DESCRIPTION] "TS ON",2
+[VALUE_DESCRIPTION] "RTD REQUEST",3
+[VALUE_DESCRIPTION] "RTD",4
+[VALUE_DESCRIPTION] "TS OFF",5
+[VALUE_DESCRIPTION] "DISCHARGE",255
+[START_SIGNALS] DSPACE_amkInvFL_FSM_State,8,2,0,I,6,0,1,0,1,,,DASH,SCANNER
+[VALUE_DESCRIPTION] "RESET",0
+[VALUE_DESCRIPTION] "LV ON ",1
+[VALUE_DESCRIPTION] "TS ON",2
+[VALUE_DESCRIPTION] "RTD",3
+[VALUE_DESCRIPTION] "MOTOR DRIVE",4
+[VALUE_DESCRIPTION] "INTERM ERROR",5
+[VALUE_DESCRIPTION] "HARD ERROR",6
+[START_SIGNALS] DSPACE_amkInvFR_FSM_State,8,3,0,I,6,0,1,0,1,,,DASH,SCANNER
+[VALUE_DESCRIPTION] "RESET",0
+[VALUE_DESCRIPTION] "LV ON ",1
+[VALUE_DESCRIPTION] "TS ON",2
+[VALUE_DESCRIPTION] "RTD",3
+[VALUE_DESCRIPTION] "MOTOR DRIVE",4
+[VALUE_DESCRIPTION] "INTERM ERROR",5
+[VALUE_DESCRIPTION] "HARD ERROR",6
+[START_SIGNALS] DSPACE_amkInvRL_FSM_State,8,4,0,I,6,0,1,0,1,,,DASH,SCANNER
+[VALUE_DESCRIPTION] "RESET",0
+[VALUE_DESCRIPTION] "LV ON ",1
+[VALUE_DESCRIPTION] "TS ON",2
+[VALUE_DESCRIPTION] "RTD",3
+[VALUE_DESCRIPTION] "MOTOR DRIVE",4
+[VALUE_DESCRIPTION] "INTERM ERROR",5
+[VALUE_DESCRIPTION] "HARD ERROR",6
+[START_SIGNALS] DSPACE_amkInvRR_FSM_State,8,5,0,I,6,0,1,0,1,,,DASH,SCANNER
+[VALUE_DESCRIPTION] "RESET",0
+[VALUE_DESCRIPTION] "LV ON ",1
+[VALUE_DESCRIPTION] "TS ON",2
+[VALUE_DESCRIPTION] "RTD",3
+[VALUE_DESCRIPTION] "MOTOR DRIVE",4
+[VALUE_DESCRIPTION] "INTERM ERROR",5
+[VALUE_DESCRIPTION] "HARD ERROR",6
+[END_MSG]
+
+[START_MSG] BMS_LV__cellsStatus,1204,5,26,0,S,BMS_LV
+[START_SIGNALS] LV_CELL_0_isOV,1,1,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_0_isUV,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_1_isOV,1,1,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_1_isUV,1,1,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_2_isOV,1,1,4,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_2_isUV,1,1,5,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_3_isOV,1,1,6,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_3_isUV,1,1,7,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_4_isOV,1,2,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_4_isUV,1,2,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_5_isOV,1,2,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_5_isUV,1,2,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_6_isOV,1,2,4,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_6_isUV,1,2,5,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_00_isOT,1,2,6,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_01_isOT,1,2,7,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_02_isOT,1,3,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_03_isOT,1,3,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_04_isOT,1,3,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_05_isOT,1,3,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_06_isOT,1,3,4,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_07_isOT,1,3,5,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_08_isOT,1,3,6,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_09_isOT,1,3,7,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_10_isOT,1,4,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_11_isOT,1,4,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] BMS_LV__status,1220,1,2,0,S,BMS_LV
+[START_SIGNALS] LV_RELAY_isClosed,1,1,0,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] LV_RELAY_isRelayOverrideOn,1,1,1,U,1,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] BMS_LV__lvCellVoltage0,1236,8,4,0,S,BMS_LV
+[START_SIGNALS] LV_CELL_0_voltage,16,1,0,U,65535,0,1,2000,0.038,mV,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_1_voltage,16,3,0,U,65535,0,1,2000,0.038,mV,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_2_voltage,16,5,0,U,65535,0,1,2000,0.038,mV,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_3_voltage,16,7,0,U,65535,0,1,2000,0.038,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] BMS_LV__lvCellVoltage1,1252,6,3,0,S,BMS_LV
+[START_SIGNALS] LV_CELL_4_voltage,16,1,0,U,65535,0,1,2000,0.038,mV,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_5_voltage,16,3,0,U,65535,0,1,2000,0.038,mV,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_6_voltage,16,5,0,U,65535,0,1,2000,0.038,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] DASH__peripheralsStatus,1269,1,1,0,S,DASH
+[START_SIGNALS] TSAC_FAN_pwmDutyCycleStatus,4,1,0,U,10,0,1,0,1,%,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] TPMS__frontWheelsPressure,1290,8,10,0,S,TPMS
+[START_SIGNALS] TIRE_FL_sensID,8,1,0,U,255,1,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FL_statusIsSpinning,1,2,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FL_statusIsVbattNotOk,1,2,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FL_temperature,8,3,0,U,170,10,1,-50,1,degC,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FL_pressure,8,4,0,U,18.5354,0.0729741,1,-0.7035,13.7035,mB,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FR_sensID,8,5,0,U,255,1,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FR_statusIsSpinning,1,6,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FR_statusIsVbattNotOk,1,6,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FR_temperature,8,7,0,U,170,10,1,-50,1,degC,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_FR_pressure,8,8,0,U,18.5354,0.0729741,1,-0.7035,13.7035,mB,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] TPMS__rearWheelsPressure,1306,8,10,0,S,TPMS
+[START_SIGNALS] TIRE_RL_sensID,8,1,0,U,255,1,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RL_statusIsSpinning,1,2,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RL_statusIsVbattNotOk,1,2,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RL_temperature,8,3,0,U,170,10,1,-50,1,degC,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RL_pressure,8,4,0,U,18.5354,0.0729741,1,-0.7035,13.7035,mB,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RR_sensID,8,5,0,U,255,1,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RR_statusIsSpinning,1,6,2,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RR_statusIsVbattNotOk,1,6,3,U,1,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RR_temperature,8,7,0,U,170,10,1,-50,1,degC,,DSPACE,SCANNER
+[START_SIGNALS] TIRE_RR_pressure,8,8,0,U,18.5354,0.0729741,1,-0.7035,13.7035,mB,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] NLG5_ST,1552,4,25,0,S,BRUSA
+[START_SIGNALS] NLG5_S_CP_DT,1,1,0,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_UM_II,1,1,1,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_UM_I,1,1,2,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_EUM,1,1,3,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_FAN,1,1,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_WAR,1,1,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_ERR,1,1,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_HE,1,1,7,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_PMAX,1,2,0,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_CP,1,2,1,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_PI,1,2,2,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_MC,1,2,3,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_OC,1,2,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_OV,1,2,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_BPD_II,1,2,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_BPD_I,1,2,7,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_T_BATT,1,3,0,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_T_TR,1,3,1,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_T_DIO,1,3,2,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_T_POW,1,3,3,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_T_CPRIM,1,3,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_MO_MAX,1,3,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_OC_MAX,1,3,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_L_MC_MAX,1,3,7,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_S_AAC,1,4,0,U,1,0,0,0,1,,,SCANNER
+[END_MSG]
+
+[START_MSG] NLG5_ACT_I,1553,8,4,0,S,BRUSA
+[START_SIGNALS] NLG5_MC_ACT,16,2,0,U,5000,0,0,0,0.01,A,,SCANNER
+[START_SIGNALS] NLG5_MV_ACT,16,4,0,U,5000,0,0,0,0.1,V,,SCANNER
+[START_SIGNALS] NLG5_OV_ACT,16,6,0,U,10000,0,0,0,0.1,V,,SCANNER
+[START_SIGNALS] NLG5_OC_ACT,16,8,0,I,15000,0,0,0,0.01,A,,SCANNER
+[END_MSG]
+
+[START_MSG] NLG5_ACT_II,1554,8,5,0,S,BRUSA
+[START_SIGNALS] NLG5_S_MC_M_CP,16,2,0,U,1000,0,0,0,0.1,A,,SCANNER
+[START_SIGNALS] NLG5_S_MC_M_PI,8,3,0,U,200,0,0,0,0.1,A,,SCANNER
+[START_SIGNALS] NLG5_ABV,8,4,0,U,250,0,0,0,0.1,V,,SCANNER
+[START_SIGNALS] NLG5_AHC_EXT,16,6,0,I,32767,-32768,0,0,0.01,Ah,,SCANNER
+[START_SIGNALS] NLG5_OC_BO,16,8,0,U,5000,0,0,0,0.01,A,,SCANNER
+[END_MSG]
+
+[START_MSG] NLG5_TEMP,1555,8,4,0,S,BRUSA
+[START_SIGNALS] NLG5_P_TMP,16,2,0,I,3000,-400,0,0,0.1,degC,,SCANNER
+[START_SIGNALS] NLG5_TMP_EXT1,16,4,0,I,3000,-400,0,0,0.1,degC,,SCANNER
+[START_SIGNALS] NLG5_TEMP_EXT2,16,6,0,I,3000,-400,0,0,0.1,degC,,SCANNER
+[START_SIGNALS] NLG5_TMP_EXT3,16,8,0,I,3000,-400,0,0,0.1,degC,,SCANNER
+[END_MSG]
+
+[START_MSG] NLG5_ERR,1556,5,37,0,S,BRUSA
+[START_SIGNALS] NLG5_E_MF,1,1,0,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_OF,1,1,1,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_P_MV,1,1,2,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_P_OM,1,1,3,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_SC,1,1,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_MOV_I,1,1,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_MOV_II,1,1,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_OOV,1,1,7,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_T_EXT3,1,2,0,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_T_EXT2,1,2,1,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_T_EXT1,1,2,2,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_T_TR,1,2,3,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_T_DIO,1,2,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_T_POW,1,2,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_T_C,1,2,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_B_P,1,2,7,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_C_OFF,1,3,0,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_C_TO,1,3,1,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_INIT,1,3,2,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_WDT,1,3,3,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_EP_CRC,1,3,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_ES_CRC,1,3,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_NV_CRC,1,3,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_F_CRC,1,3,7,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_SDT_CT,1,4,2,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_SDT_AH,1,4,3,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_SDT_BV,1,4,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_SDT_BT,1,4,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_C_RX,1,4,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_E_C_TX,1,4,7,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_W_SC_M,1,5,0,U,0,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_W_OD,1,5,1,U,0,0,0,0,1,,,
+[START_SIGNALS] NLG5_W_CM_NA,1,5,3,U,0,0,0,0,1,,,
+[START_SIGNALS] NLG5_W_C_VOR,1,5,4,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_W_PL_IT,1,5,5,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_W_PL_BV,1,5,6,U,1,0,0,0,1,,,SCANNER
+[START_SIGNALS] NLG5_W_PL_MV,1,5,7,U,1,0,0,0,1,,,SCANNER
+[END_MSG]
+
+[START_MSG] NLG5_CTL,1560,7,7,0,S,BRUSA
+[START_SIGNALS] NLG5_C_MR,1,1,4,U,1,0,0,0,1,,,BRUSA,SCANNER
+[START_SIGNALS] NLG5_C_CP_V,1,1,5,U,1,0,0,0,1,,,BRUSA,SCANNER
+[START_SIGNALS] NLG5_C_C_EL,1,1,6,U,1,0,0,0,1,,,BRUSA,SCANNER
+[START_SIGNALS] NLG5_C_C_EN,1,1,7,U,1,0,0,0,1,,,BRUSA,SCANNER
+[START_SIGNALS] NLG5_MC_MAX,16,3,0,U,500,0,0,0,0.1,A,,BRUSA,SCANNER
+[START_SIGNALS] NLG5_OV_COM,16,5,0,U,10000,0,0,0,0.1,V,,BRUSA,SCANNER
+[START_SIGNALS] NLG5_OC_COM,16,7,0,U,1500,0,0,0,0.1,A,,BRUSA,SCANNER
+[END_MSG]
+
+[START_MSG] TLB_BAT__hello,1601,3,3,0,S,TLB_BAT
+[START_SIGNALS] FW_majorVersion,8,1,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_minorVersion,8,2,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_patchVersion,8,3,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_FRONT__hello,1602,3,3,0,S,SB_FRONT
+[START_SIGNALS] FW_majorVersion,8,1,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_minorVersion,8,2,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_patchVersion,8,3,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_REAR__hello,1603,3,3,0,S,SB_REAR
+[START_SIGNALS] FW_majorVersion,8,1,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_minorVersion,8,2,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_patchVersion,8,3,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] BMS_LV__hello,1604,3,3,0,S,BMS_LV
+[START_SIGNALS] FW_majorVersion,8,1,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_minorVersion,8,2,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_patchVersion,8,3,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] DASH__hello,1605,3,3,0,S,DASH
+[START_SIGNALS] FW_majorVersion,8,1,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_minorVersion,8,2,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[START_SIGNALS] FW_patchVersion,8,3,0,U,255,0,1,0,1,,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] DSPACE__hello,1607,3,3,0,S,DSPACE
+[START_SIGNALS] FW_majorVersion,8,1,0,U,255,0,1,0,1,,,SCANNER
+[START_SIGNALS] FW_minorVersion,8,2,0,U,255,0,1,0,1,,,SCANNER
+[START_SIGNALS] FW_patchVersion,8,3,0,U,255,0,1,0,1,,,SCANNER
+[END_MSG]
+
+[START_MSG] BMS_LV__lvCellNTCResistance0,1620,8,6,0,S,BMS_LV
+[START_SIGNALS] LV_CELL_NTC_00_resistance,10,1,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_01_resistance,10,2,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_02_resistance,10,3,4,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_03_resistance,10,4,6,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_04_resistance,10,6,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_05_resistance,10,7,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] BMS_LV__lvCellNTCResistance1,1636,8,6,0,S,BMS_LV
+[START_SIGNALS] LV_CELL_NTC_06_resistance,10,1,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_07_resistance,10,2,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_08_resistance,10,3,4,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_09_resistance,10,4,6,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_10_resistance,10,6,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] LV_CELL_NTC_11_resistance,10,7,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_FRONT__ntcResistance,1650,8,6,0,S,SB_FRONT
+[START_SIGNALS] JACKET_FL_NTC_resistance,10,1,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] JACKET_FR_NTC_resistance,10,2,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] COLDPLATE_L_NTC_resistance,10,3,4,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] COLDPLATE_R_NTC_resistance,10,4,6,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] SPARE_NTC_0_resistance,10,6,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] SPARE_NTC_1_resistance,10,7,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] SB_REAR__ntcResistance,1667,8,6,0,S,SB_REAR
+[START_SIGNALS] JACKET_RL_NTC_resistance,10,1,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] JACKET_RR_NTC_resistance,10,2,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] RAD_RL_IN_NTC_resistance,10,3,4,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] RAD_RL_OUT_NTC_resistance,10,4,6,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] RAD_RR_IN_NTC_resistance,10,6,0,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[START_SIGNALS] RAD_RR_OUT_NTC_resistance,10,7,2,U,1023,0,1,1000,31.25,Ohm,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] DASH__appsRangeLimits,1685,8,4,0,S,DASH
+[START_SIGNALS] APPS_0_voltageRangeMin,16,1,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] APPS_0_voltageRangeMax,16,3,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] APPS_1_voltageRangeMin,16,5,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[START_SIGNALS] APPS_1_voltageRangeMax,16,7,0,U,65535,0,1,0,1,mV,,DSPACE,SCANNER
+[END_MSG]
+
+[START_MSG] DASH__carCommands,1701,2,2,0,S,DASH
+[START_SIGNALS] BMS_LV_diagPWD,15,1,0,U,32768,0,1,0,1,,,BMS_LV
+[START_SIGNALS] LV_RELAY_forcedState,1,2,7,U,1,0,1,0,1,closed,,BMS_LV
+[END_MSG]
+
+[START_MSG] DSPACE__dashLedsColorRGB,1719,5,12,0,S,DSPACE
+[START_SIGNALS] LED_1_red,3,1,0,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_1_green,3,1,3,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_1_blue,3,1,6,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_2_red,3,2,1,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_2_green,3,2,4,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_2_blue,3,2,7,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_3_red,3,3,2,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_3_green,3,3,5,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_3_blue,3,4,0,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_4_red,3,4,3,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_4_green,3,4,6,U,7,0,1,0,1,,,
+[START_SIGNALS] LED_4_blue,3,5,1,U,7,0,1,0,1,,,
+[END_MSG]
+
+[START_MSG] IRTS_placeholderMessage,1800,8,1,0,S,EXTRA_NODE
+[START_SIGNALS] IRTS_signalPlaceholder,64,1,0,U,65535,0,1,0,1,,,
+[END_MSG]
+
+[START_MSG] NLG5_DIAG_RX,1816,8,1,0,S,BRUSA
+[START_SIGNALS] LAD_D_ParamRq,64,8,0,U,0,0,0,0,1,,,BRUSA,SCANNER
+[END_MSG]
+
+[START_MSG] NLG5_DIAG_TX,1818,8,1,0,S,BRUSA
+[START_SIGNALS] LAD_D_ParamRp,64,8,0,U,0,0,0,0,1,,,BRUSA,SCANNER
+[END_MSG]
+
+[NODE] TLB_BAT,TPMS,BMS_LV,DASH,DSPACE,SCANNER,IMU,BRUSA,DIAG_TOOL,EXTRA_NODE,SB_FRONT,SB_REAR
+[START_DESC]
+
+[START_DESC_MSG]
+23 S "(cycle_time: 10) (send_type: Cyclic)";
+65 S "(cycle_time: 10) (send_type: Cyclic)";
+82 S "(cycle_time: 10) (send_type: Cyclic)";
+99 S "(cycle_time: 10) (send_type: Cyclic)";
+115 S "(cycle_time: 10) (send_type: Cyclic)";
+324 S "(cycle_time: 100) (send_type: Cyclic)";
+357 S "(cycle_time: 200) (send_type: Cyclic)";
+407 S "(cycle_time: 10) (send_type: Cyclic)";
+646 S "(send_type: CyclicIfActive)";
+662 S "(send_type: CyclicIfActive)";
+678 S "(send_type: CyclicIfActive)";
+694 S "(send_type: CyclicIfActive)";
+710 S "(send_type: CyclicIfActive)";
+726 S "(send_type: CyclicIfActive)";
+737 S "(cycle_time: 10) (send_type: Cyclic)";
+755 S "(cycle_time: 10) (send_type: Cyclic)";
+770 S "(cycle_time: 10) (send_type: Cyclic)";
+802 S "(cycle_time: 10) (send_type: Cyclic)";
+819 S "(cycle_time: 10) (send_type: Cyclic)";
+891 S "";
+907 S "";
+923 S "";
+939 S "";
+955 S "";
+971 S "";
+1121 S "(send_type: CyclicIfActive)";
+1122 S "(send_type: CyclicIfActive)";
+1123 S "(send_type: CyclicIfActive)";
+1124 S "(send_type: CyclicIfActive)";
+1125 S "(send_type: CyclicIfActive)";
+1129 S "(send_type: CyclicIfActive)";
+1175 S "(cycle_time: 100) (send_type: Cyclic)";
+1191 S "(cycle_time: 100) (send_type: Cyclic)";
+1204 S "(cycle_time: 100) (send_type: Cyclic)";
+1220 S "(cycle_time: 500) (send_type: Cyclic)";
+1236 S "(cycle_time: 100) (send_type: Cyclic)";
+1252 S "(cycle_time: 100) (send_type: Cyclic)";
+1269 S "(cycle_time: 500) (send_type: Cyclic)";
+1290 S "(send_type: CyclicIfActive)";
+1306 S "(send_type: CyclicIfActive)";
+1552 S "(cycle_time: 100)";
+1553 S "(cycle_time: 100)";
+1554 S "(cycle_time: 100)";
+1555 S "(cycle_time: 1000)";
+1556 S "(cycle_time: 1000)";
+1560 S "(cycle_time: 100)";
+1601 S "(send_type: IfActive)";
+1602 S "(send_type: IfActive)";
+1603 S "(send_type: IfActive)";
+1604 S "(send_type: IfActive)";
+1605 S "(send_type: IfActive)";
+1607 S "(send_type: IfActive)";
+1620 S "(cycle_time: 2000) (send_type: Cyclic)";
+1636 S "(cycle_time: 2000) (send_type: Cyclic)";
+1650 S "(cycle_time: 500) (send_type: Cyclic)";
+1667 S "(cycle_time: 500) (send_type: Cyclic)";
+1685 S "(send_type: IfActive)";
+1701 S "(send_type: IfActive)";
+1719 S "(cycle_time: 200) (send_type: Cyclic)";
+1800 S "IRTS message placeholder TODO: update this message when you have the specification";
+1816 S "";
+1818 S "";
+[END_DESC_MSG]
+[START_DESC_NODE]
+TLB_BAT "TSAL-latch-board battery ECU";
+TPMS "Tire pressure monitoring system";
+BMS_LV "Battery-Management-System Low-Voltage ECU";
+DASH "Dashboard ECU";
+DSPACE "An automotive ECU";
+SCANNER "Can Logger ECU";
+IMU "Inertial Measurement Unit.";
+BRUSA "Brusa NLG5 charger.";
+DIAG_TOOL "Diagnostic tool";
+EXTRA_NODE "Extra CAN BUS-Nodes not permanent or temporary";
+SB_FRONT "Sensorboard front ECU";
+SB_REAR "Sensorboard rear ECU";
+[END_DESC_NODE]
+[START_DESC_SIG]
+23 S DATETIME_year "Current year expressed as an offset from 1970";
+23 S DATETIME_month "Current month of the year (1 = January, 12 = December)";
+23 S DATETIME_day "Current day of the month, from 1 to 31";
+23 S DATETIME_hours "Current hours of the day (1-24)";
+23 S DATETIME_minutes "Current minutes of the hour";
+23 S DATETIME_seconds "Current seconds of the minute";
+23 S DATETIME_houndresOfASeconds "Current tens of the second";
+65 S AIR_POS_cmd_isActive "Status of the Positive AIR command";
+65 S AIR_POS_isClosed "Status of the Positive AIR mechanical state";
+65 S AIR_NEG_cmd_isActive "Status of the Negative AIR command";
+65 S AIR_NEG_isClosed "Status of the Negative AIR mechanical state";
+65 S DCBUS_PRECH_RLY_cmd_isActive "Status of the DCBUS Precharge Relay command";
+65 S DCBUS_PRECH_RLY_isClosed "Status of the DCBUS Precharge Relay mechanical state";
+65 S AMS_err_isActive "States whether the AMS error is active";
+65 S IMD_err_isActive "States whether the IMD error is active";
+65 S TSAL_green_isActive "States whether the TSAL green signal is active";
+65 S DCBUS_isOver60V "States whether the DC BUS volatge is over 60V";
+65 S IMP_any_isActive "States whether any implausibility is active";
+65 S IMP_HV_RelaysState_isActive "States whether an implausibility on HV relays (NEG,POS,PRECH) State is active (differene between cmd and mechanical state)";
+65 S IMP_DCBUS_isActive "States whether the DCBUS Implausibility is active (DCBUS Less then 60V and TS is active)";
+65 S AIR_POS_STG_mechStateSignal_isActive "States whether a Short To Gnd on AIR POS mechanical state signal is active";
+65 S AIR_NEG_STG_mechStateSignal_isActive "States whether a Short To Gnd on AIR NEG mechanical state signal is active";
+82 S APPS_0_voltage "The voltage of the APPS #0 expressed in mV";
+82 S APPS_1_voltage "The voltage of the APPS #1 expressed in mV";
+82 S STEER_RME_voltage "The voltage of the Steering Wheel RME (rotary magnetic encoder) sensor expressed in mV";
+82 S BRAKE_PRESS_FRONT_voltage "The voltage of the front brake pressure sensor expressed in mV";
+99 S COOL_PRESS_LEFT_voltage "The voltage of the left cooling pressure sensor expressed in mV";
+99 S COOL_PRESS_RIGHT_voltage "The voltage of the right cooling pressure sensor expressed in mV";
+99 S BRAKE_PRESS_REAR_voltage "The voltage of the rear brake pressure sensor expressed in mV";
+115 S DISCHARGE_isActive "States whether the discharge is discharging the DCBUS";
+115 S BSPD_hasError "States whether the BSPD has an error";
+324 S LV_BAT_currentSensVoltage "The voltage returned by the current sensor of the LV battery expressed in mV";
+324 S LV_BAT_voltage "The total read voltage of the LV battery pack expressed in mV";
+324 S LV_BAT_summedVoltage "The total voltage of the LV battery pack calculated by summing each cell voltage expressed in mV";
+357 S BTN_RTD_isPressed "Ready To Drive Button pressed";
+357 S BTN_1_isPressed "Steering wheel Button #1 is pressed";
+357 S BTN_2_isPressed "Steering wheel Button #2 is pressed";
+357 S BTN_3_isPressed "Steering wheel Button #3 is pressed";
+357 S BTN_4_isPressed "Steering wheel Button #4 is pressed";
+357 S ROT_SW_1_state "Rotary Switch 1 state";
+357 S ROT_SW_2_state "Rotary Switch 2 state";
+407 S BRAKE_LIGHT_activeCMD "The command to turn on the brake light (0 inactive - 1 active)";
+407 S DASH_SDC_RLY_closeCMD "The command to close the SDC relay (0 open - 1 close)";
+407 S RAD_FAN_pwmDutyCicleCtrl "PWM duty cycle percentage for Radiator Fans control";
+407 S COOL_PUMPS_speedCtrl "Speed percentage for Cooling Pumps control";
+646 S xcp_payload "xcp payload data";
+662 S xcp_payload "xcp payload data";
+678 S xcp_payload "xcp payload data";
+694 S xcp_payload "xcp payload data";
+710 S xcp_payload "xcp payload data";
+726 S xcp_payload "xcp payload data";
+737 S SDC_TSAC_initialIn_isActive "Shutdown Circuit sensing: TSAC Initial input is active status";
+737 S SDC_post_AMS_IMD_relay_isActive "Shutdown Circuit sensing: post AMS/IMD relay is active status";
+737 S SDC_TSAC_finalIn_isActive "Shutdown Circuit sensing: TSAC Final Input is active status";
+737 S SDC_PrechBypassRelay_isClosed "States whether the SDC precharge bypass relay is closed";
+737 S SDC_TSAC_initialIn_voltage "Shutdown Circuit sensing: TSAC Initial Input voltage";
+737 S SDC_TSAC_finalIn_voltage "Shutdown Circuit sensing: TSAC Final Input voltage";
+755 S SDC_POST_BSPD_isClosed "States whether the SDC post BSPD is closed";
+755 S SDC_PRE_PUSH_BTNS_isClosed "States whether the SDC per push buttons (hoop right/left) is closed";
+755 S SDC_POST_DC_BUS_isClosed "States whether the SDC post DC bus (inverter mono) is closed";
+755 S SDC_POST_INV_FR_isClosed "States whether the SDC post inverter front right is closed";
+770 S SDC_POST_INERTIA_isActive "States whether the SDC post inertia switch is active";
+770 S SDC_POST_BOTS_isActive "States whether the SDC post BOTS is active";
+770 S SDC_POST_CP_PUSH_BTN_isActive "States whether the SDC post cockpit push button is active";
+802 S LPPS_DAMPER_FL_voltage "The voltage of the linear potentiometer position sensor on the front left damper expressed in mV";
+802 S LPPS_DAMPER_FR_voltage "The voltage of the linear potentiometer position sensor on the front right damper expressed in mV";
+819 S LPPS_DAMPER_RL_voltage "The voltage of the linear potentiometer position sensor on the rear left damper expressed in mV";
+819 S LPPS_DAMPER_RR_voltage "The voltage of the linear potentiometer position sensor on the rear left damper expressed in mV";
+1121 S xcp_payload "xcp payload data";
+1122 S xcp_payload "xcp payload data";
+1123 S xcp_payload "xcp payload data";
+1124 S xcp_payload "xcp payload data";
+1125 S xcp_payload "xcp payload data";
+1129 S xcp_payload "xcp payload data";
+1175 S HVBAT_soc "HV Battery State Of Charge percentage";
+1191 S DSPACE_main_FSM_State "The state of the main/RTD FSM of dspace";
+1191 S DSPACE_amkInvFL_FSM_State "The state of the AMK Inverter Front Left FSM of dspace";
+1191 S DSPACE_amkInvFR_FSM_State "The state of the AMK Inverter Front Right FSM of dspace";
+1191 S DSPACE_amkInvRL_FSM_State "The state of the AMK Inverter Rear Left FSM of dspace";
+1191 S DSPACE_amkInvRR_FSM_State "The state of the AMK Inverter Rear Right FSM of dspace";
+1204 S LV_CELL_0_isOV "States whether the LV cell #0 is in overvoltage";
+1204 S LV_CELL_0_isUV "States whether the LV cell #0 is in undervoltage";
+1204 S LV_CELL_1_isOV "States whether the LV cell #1 is in overvoltage";
+1204 S LV_CELL_1_isUV "States whether the LV cell #1 is in undervoltage";
+1204 S LV_CELL_2_isOV "States whether the LV cell #2 is in overvoltage";
+1204 S LV_CELL_2_isUV "States whether the LV cell #2 is in undervoltage";
+1204 S LV_CELL_3_isOV "States whether the LV cell #3 is in overvoltage";
+1204 S LV_CELL_3_isUV "States whether the LV cell #3 is in undervoltage";
+1204 S LV_CELL_4_isOV "States whether the LV cell #4 is in overvoltage";
+1204 S LV_CELL_4_isUV "States whether the LV cell #4 is in undervoltage";
+1204 S LV_CELL_5_isOV "States whether the LV cell #5 is in overvoltage";
+1204 S LV_CELL_5_isUV "States whether the LV cell #5 is in undervoltage";
+1204 S LV_CELL_6_isOV "States whether the LV cell #6 is in overvoltage";
+1204 S LV_CELL_6_isUV "States whether the LV cell #6 is in undervoltage";
+1204 S LV_CELL_NTC_00_isOT "States whether the LV cell temperature sensor #0 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_01_isOT "States whether the LV cell temperature sensor #1 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_02_isOT "States whether the LV cell temperature sensor #2 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_03_isOT "States whether the LV cell temperature sensor #3 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_04_isOT "States whether the LV cell temperature sensor #4 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_05_isOT "States whether the LV cell temperature sensor #5 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_06_isOT "States whether the LV cell temperature sensor #6 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_07_isOT "States whether the LV cell temperature sensor #7 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_08_isOT "States whether the LV cell temperature sensor #8 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_09_isOT "States whether the LV cell temperature sensor #9 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_10_isOT "States whether the LV cell temperature sensor #10 (NTC) detects an over temperature";
+1204 S LV_CELL_NTC_11_isOT "States whether the LV cell temperature sensor #11 (NTC) detects an over temperature";
+1220 S LV_RELAY_isClosed "States whether the LV relay is closed";
+1220 S LV_RELAY_isRelayOverrideOn "States whether the LV relay override is enabled";
+1236 S LV_CELL_0_voltage "The voltage of the LV cell #0 expressed in mV";
+1236 S LV_CELL_1_voltage "The voltage of the LV cell #1 expressed in mV";
+1236 S LV_CELL_2_voltage "The voltage of the LV cell #2 expressed in mV";
+1236 S LV_CELL_3_voltage "The voltage of the LV cell #3 expressed in mV";
+1252 S LV_CELL_4_voltage "The voltage of the LV cell #4 expressed in mV";
+1252 S LV_CELL_5_voltage "The voltage of the LV cell #4 expressed in mV";
+1252 S LV_CELL_6_voltage "The voltage of the LV cell #4 expressed in mV";
+1269 S TSAC_FAN_pwmDutyCycleStatus "PWM duty cycle percentage for TSAC fans control";
+1290 S TIRE_FL_sensID "The sensor id of the Front Left tire";
+1290 S TIRE_FL_statusIsSpinning "Acc bit of Front Left tire status register: wheel is spinning (1) or not (0)";
+1290 S TIRE_FL_statusIsVbattNotOk "Vbatt bit of Front Left tire status register: TPMS battery is below 2.2V (1) or above (0)";
+1290 S TIRE_FL_temperature "The temperature of the Front Left tire";
+1290 S TIRE_FL_pressure "The pressure of the front left tire";
+1290 S TIRE_FR_sensID "The sensor id of the front right tire";
+1290 S TIRE_FR_statusIsSpinning "Acc bit of Front Right tire status register: wheel is spinning (1) or not (0)";
+1290 S TIRE_FR_statusIsVbattNotOk "Vbatt bit of Front Right tire status register: TPMS battery is below 2.2V (1) or above (0)";
+1290 S TIRE_FR_temperature "The temperature of the Front Right tire";
+1290 S TIRE_FR_pressure "The pressure of the Front Right tire";
+1306 S TIRE_RL_sensID "The sensor id of the Rear Left tire";
+1306 S TIRE_RL_statusIsSpinning "Acc bit of Rear Left tire status register: wheel is spinning (1) or not (0)";
+1306 S TIRE_RL_statusIsVbattNotOk "Vbatt bit of Rear Left tire status register: TPMS battery is below 2.2V (1) or above (0)";
+1306 S TIRE_RL_temperature "The temperature of the Rear Left tire";
+1306 S TIRE_RL_pressure "The pressure of the front left tire";
+1306 S TIRE_RR_sensID "The sensor id of the front right tire";
+1306 S TIRE_RR_statusIsSpinning "Acc bit of Rear Right tire status register: wheel is spinning (1) or not (0)";
+1306 S TIRE_RR_statusIsVbattNotOk "Vbatt bit of Rear Right tire status register: TPMS battery is below 2.2V (1) or above (0)";
+1306 S TIRE_RR_temperature "The temperature of the Rear Right tire";
+1306 S TIRE_RR_pressure "The pressure of the Rear Right tire";
+1552 S NLG5_S_CP_DT "Control pilot signal (SAE J1772) detected ";
+1552 S NLG5_S_UM_II "US mains level 2 (240VAC / 60Hz) detected";
+1552 S NLG5_S_UM_I "US mains level 1 (120VAC / 60Hz) detected";
+1552 S NLG5_S_EUM "European mains input detected (230V, 50Hz)";
+1552 S NLG5_S_FAN "Charger cooling fan is active";
+1552 S NLG5_S_WAR "Warning condition on, i.e. charging power limited due to any limiting condition; red LED is blinking";
+1552 S NLG5_S_ERR "An error has been detected, red LED is ON, no power is output";
+1552 S NLG5_S_HE "Indicates if hardware enabled, i.e. a hi or lo signal is fed to the 'Power On' pin (pin3 of control connector)";
+1552 S NLG5_S_L_PMAX "Output power limited by maximum power capability of NLG5";
+1552 S NLG5_S_L_CP "Output power limited by control pilot signal (SAE J1772)";
+1552 S NLG5_S_L_PI "Output power limited by analog input 'power indicator' (PI) limit";
+1552 S NLG5_S_L_MC "Output power limited by mains current limit";
+1552 S NLG5_S_L_OC "Output power limited by battery output current limit";
+1552 S NLG5_S_L_OV "Output power limited by battery output voltage limit";
+1552 S NLG5_S_BPD_II "Bypass detection bit 2; 00: no bypass, 01: DC bypass detected, 10:AC bypass in phase, 11: AC bypass not in phase";
+1552 S NLG5_S_BPD_I "Bypass detection bit 1; 00: no bypass, 01: DC bypass detected, 10:AC bypass in phase, 11: AC bypass not in phase";
+1552 S NLG5_S_L_T_BATT "Output power limited by battery temperature";
+1552 S NLG5_S_L_T_TR "Output power limited by temperature of transformer";
+1552 S NLG5_S_L_T_DIO "Output power limited by temperature of diodes";
+1552 S NLG5_S_L_T_POW "Output power limited by temperature of power stage";
+1552 S NLG5_S_L_T_CPRIM "Output power limited by temperature of primary capacitors";
+1552 S NLG5_S_L_MO_MAX "Output power limited by maximum output voltage capability of NLG5";
+1552 S NLG5_S_L_OC_MAX "Output power limited by maximum output current capability of NLG5";
+1552 S NLG5_S_L_MC_MAX "Output power limited by maximum mains current capability of NLG5";
+1552 S NLG5_S_AAC "AUX 12 V Automatic Charging Active";
+1553 S NLG5_MC_ACT "Actual mains current";
+1553 S NLG5_MV_ACT "Actual mains voltage";
+1553 S NLG5_OV_ACT "Actual battery output voltage";
+1553 S NLG5_OC_ACT "output current to the battery";
+1554 S NLG5_S_MC_M_CP "Value of mains current limit, commanded by the control pilot (SAE J1772) signal";
+1554 S NLG5_S_MC_M_PI "Value of mains current limit, commanded by the 'power indicator' (PI) analog input signal";
+1554 S NLG5_ABV "Aux battery voltage";
+1554 S NLG5_AHC_EXT "Charge balance obtained via  Ext. Ah counter connected to DI1 / DI2";
+1554 S NLG5_OC_BO "output current of the booster (if one is present and active)";
+1555 S NLG5_P_TMP "Power stage temperature";
+1555 S NLG5_TMP_EXT1 "Value of external battery temperature sensor #1 (if connected and enabled)";
+1555 S NLG5_TEMP_EXT2 "Value of external battery temperature sensor #2 (if connected and enabled)";
+1555 S NLG5_TMP_EXT3 "Value of external battery temperature sensor #3 (if connected and enabled)";
+1556 S NLG5_E_MF "Mains fuse defective";
+1556 S NLG5_E_OF "output fuse defective";
+1556 S NLG5_E_P_MV "plausibility mains voltage measurement wrong";
+1556 S NLG5_E_P_OM "plausibility battery output voltage measurement wrong";
+1556 S NLG5_E_SC "power stage short circuit condition detected; error can only be cleared by cycling power ON-OFF-ON";
+1556 S NLG5_E_MOV_I "Mains overvoltage 1 detected";
+1556 S NLG5_E_MOV_II "Mains overvoltage 2 detected";
+1556 S NLG5_E_OOV "battery output overvoltage; error can only be cleared by cycling power ON-OFF-ON";
+1556 S NLG5_E_T_EXT3 "Ext. temperature sensor 3 defective (if enabled)";
+1556 S NLG5_E_T_EXT2 "Ext. temperature sensor 2 defective (if enabled)";
+1556 S NLG5_E_T_EXT1 "Ext. temperature sensor 1 defective (if enabled)";
+1556 S NLG5_E_T_TR "Temperature sensor for transformer defective";
+1556 S NLG5_E_T_DIO "Temperature sensor for diodes defective";
+1556 S NLG5_E_T_POW "Temperature sensor for prim power stage defective";
+1556 S NLG5_E_T_C "Temperature sensor for prim capacitor defective";
+1556 S NLG5_E_B_P "wrong battery polarity;  error can only be cleared by cycling power ON-OFF-ON";
+1556 S NLG5_E_C_OFF "CAN off, transmit buffer >255";
+1556 S NLG5_E_C_TO "CAN timeout, no control message received for >300ms";
+1556 S NLG5_E_INIT "Initialization error";
+1556 S NLG5_E_WDT "Internal Watchdog Timeout";
+1556 S NLG5_E_EP_CRC "Pow EEPROM checksum failure";
+1556 S NLG5_E_ES_CRC "Sys EEPROM checksum failure";
+1556 S NLG5_E_NV_CRC "NVSRAM check sum failure; contains most of the scaling & calibration values, CAN ID's and  charging profile etc.";
+1556 S NLG5_E_F_CRC "Flash memory checksum failure";
+1556 S NLG5_E_SDT_CT "Emergency Shutdown Threshold 'Charging Time' is exceeded; see ChargeStar help section 'protective features';  error can only be cleared by cycling power ON-OFF-ON";
+1556 S NLG5_E_SDT_AH "Emergency Shutdown Threshold 'Amp Hours' is exceeded; see ChargeStar help section 'protective features';  error can only be cleared by cycling power ON-OFF-ON";
+1556 S NLG5_E_SDT_BV "Emergency Shutdown Threshold 'Battery Voltage' is exceeded; see ChargeStar help section 'protective features';  error can only be cleared by cycling power ON-OFF-ON";
+1556 S NLG5_E_SDT_BT "Emergency Shutdown Threshold 'Battery Temperature' is exceeded; see ChargeStar help section 'protective features';  error can only be cleared by cycling power ON-OFF-ON";
+1556 S NLG5_E_C_RX "CAN receiver buffer >127";
+1556 S NLG5_E_C_TX "CAN transmit buffer >127";
+1556 S NLG5_W_SC_M "Save-Charging-Mode reduces primary current to 3.95 A as long as one of the four internal temperature sensors indicates -18deg C or less.";
+1556 S NLG5_W_OD "LED Output driver defective, LEDs cannot be controlled by NLG5 anymore. Charging is still possible.";
+1556 S NLG5_W_CM_NA "NLG5 Control message not active";
+1556 S NLG5_W_C_VOR "Commanded value is out of specified range; max or min applicable value is assumed instead";
+1556 S NLG5_W_PL_IT "Output power limited by charger internal overtemperature";
+1556 S NLG5_W_PL_BV "Output power limited by low battery voltage";
+1556 S NLG5_W_PL_MV "Output power limited by low mains voltage";
+1560 S NLG5_C_MR "Enables CP-State C to request mains voltage";
+1560 S NLG5_C_CP_V "special signal to tell a charging station equipped with the Control Pilot interface (SAE J1772) to switch on the facility's ventilation (in order to get rid of battery gases like hydrogen, e.g.)";
+1560 S NLG5_C_C_EL "cycle this value 0-1-0 to clear all latched charger errors ";
+1560 S NLG5_C_C_EN "Must be ON to enable power stage of the charger";
+1560 S NLG5_MC_MAX "Maximum current to be drawn from the mains outlet, usually 16A. Must always contain a valid value in order to keep on charging.";
+1560 S NLG5_OV_COM "Desired voltage to be output to the battery. Must always contain a valid value in order to keep on charging.";
+1560 S NLG5_OC_COM "Desired battery current. Must always contain a valid value in order to keep on charging.";
+1601 S FW_majorVersion "firmware major version number";
+1601 S FW_minorVersion "firmware minor version number";
+1601 S FW_patchVersion "firmware patch version number";
+1602 S FW_majorVersion "firmware major version number";
+1602 S FW_minorVersion "firmware minor version number";
+1602 S FW_patchVersion "firmware patch version number";
+1603 S FW_majorVersion "firmware major version number";
+1603 S FW_minorVersion "firmware minor version number";
+1603 S FW_patchVersion "firmware patch version number";
+1604 S FW_majorVersion "firmware major version number";
+1604 S FW_minorVersion "firmware minor version number";
+1604 S FW_patchVersion "firmware patch version number";
+1605 S FW_majorVersion "firmware major version number";
+1605 S FW_minorVersion "firmware minor version number";
+1605 S FW_patchVersion "firmware patch version number";
+1607 S FW_majorVersion "firmware major version number";
+1607 S FW_minorVersion "firmware minor version number";
+1607 S FW_patchVersion "firmware patch version number";
+1620 S LV_CELL_NTC_00_resistance "The resistance of the NTC #0 in the battery pack expressed in Ohm";
+1620 S LV_CELL_NTC_01_resistance "The resistance of the NTC #1 in the battery pack expressed in Ohm";
+1620 S LV_CELL_NTC_02_resistance "The resistance of the NTC #2 in the battery pack expressed in Ohm";
+1620 S LV_CELL_NTC_03_resistance "The resistance of the NTC #3 in the battery pack expressed in Ohm";
+1620 S LV_CELL_NTC_04_resistance "The resistance of the NTC #4 in the battery pack expressed in Ohm";
+1620 S LV_CELL_NTC_05_resistance "The resistance of the NTC #5 in the battery pack expressed in Ohm";
+1636 S LV_CELL_NTC_06_resistance "The resistance of the NTC #6 in the battery pack expressed in Ohm";
+1636 S LV_CELL_NTC_07_resistance "The resistance of the NTC #7 in the battery pack expressed in Ohm";
+1636 S LV_CELL_NTC_08_resistance "The resistance of the NTC #8 in the battery pack expressed in Ohm";
+1636 S LV_CELL_NTC_09_resistance "The resistance of the NTC #9 in the battery pack expressed in Ohm";
+1636 S LV_CELL_NTC_10_resistance "The resistance of the NTC #10 in the battery pack expressed in Ohm";
+1636 S LV_CELL_NTC_11_resistance "The resistance of the NTC #11 in the battery pack expressed in Ohm";
+1650 S JACKET_FL_NTC_resistance "The resistance of the front left jacket NTC expressed in Ohm";
+1650 S JACKET_FR_NTC_resistance "The resistance of the front right jacket NTC expressed in Ohm";
+1650 S COLDPLATE_L_NTC_resistance "The resistance of the left coldplate NTC expressed in Ohm";
+1650 S COLDPLATE_R_NTC_resistance "The resistance of the right coldplate NTC expressed in Ohm";
+1650 S SPARE_NTC_0_resistance "The resistance of the spare NTC #0 expressed in Ohm";
+1650 S SPARE_NTC_1_resistance "The resistance of the spare NTC #1 expressed in Ohm";
+1667 S JACKET_RL_NTC_resistance "The resistance of the rear left jacket NTC expressed in Ohm";
+1667 S JACKET_RR_NTC_resistance "The resistance of the rear right jacket NTC expressed in Ohm";
+1667 S RAD_RL_IN_NTC_resistance "The resistance of the rear left IN radiator NTC expressed in Ohm";
+1667 S RAD_RL_OUT_NTC_resistance "The resistance of the rear left OUT radiator NTC expressed in Ohm";
+1667 S RAD_RR_IN_NTC_resistance "The resistance of the rear right IN radiator NTC expressed in Ohm";
+1667 S RAD_RR_OUT_NTC_resistance "The resistance of the rear right OUT radiator NTC expressed in Ohm";
+1685 S APPS_0_voltageRangeMin "APPS channel #0 minimum range expressed in mV";
+1685 S APPS_0_voltageRangeMax "APPS channel #0 maximum range expressed in mV";
+1685 S APPS_1_voltageRangeMin "APPS channel #1 minimum range expressed in mV";
+1685 S APPS_1_voltageRangeMax "APPS channel #1 maximum range expressed in mV";
+1701 S BMS_LV_diagPWD "The password to enter diagnostic mode of the BMS_LV";
+1701 S LV_RELAY_forcedState "The command to force the LV relay open (0) or closed (1)";
+1719 S LED_1_red "The red channel of LED #1 of the dashboard";
+1719 S LED_1_green "The green channel of LED #1 of the dashboard";
+1719 S LED_1_blue "The blue channel of LED #1 of the dashboard";
+1719 S LED_2_red "The red channel of LED #2 of the dashboard";
+1719 S LED_2_green "The green channel of LED #2 of the dashboard";
+1719 S LED_2_blue "The blue channel of LED #2 of the dashboard";
+1719 S LED_3_red "The red channel of LED #3 of the dashboard";
+1719 S LED_3_green "The green channel of LED #3 of the dashboard";
+1719 S LED_3_blue "The blue channel of LED #3 of the dashboard";
+1719 S LED_4_red "The red channel of LED #4 of the dashboard";
+1719 S LED_4_green "The green channel of LED #4 of the dashboard";
+1719 S LED_4_blue "The blue channel of LED #4 of the dashboard";
+1816 S LAD_D_ParamRq "Diag requested data from host";
+1818 S LAD_D_ParamRp "Diag responded data to host";
+[END_DESC_SIG]
+[END_DESC]
+
+[START_PARAM]
+[START_PARAM_NET]
+[END_PARAM_NET]
+[START_PARAM_NODE]
+[END_PARAM_NODE]
+[START_PARAM_MSG]
+"GenMsgCycleTime",INT,0,1000
+"GenMsgSendType",ENUM,"NoMsgSendType","Cyclic","IfActive","CyclicIfActive","NotUsed"
+"MsgPeriodMS",INT,0,65535
+[END_PARAM_MSG]
+[START_PARAM_SIG]
+"GenSigSendType",ENUM,"NoSigSendType","Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NotUsed",NoSigSendType
+[END_PARAM_SIG]
+[START_PARAM_VAL]
+[START_PARAM_NODE_VAL]
+[END_PARAM_NODE_VAL]
+[START_PARAM_MSG_VAL]
+23,S,"GenMsgCycleTime","10"
+23,S,"GenMsgSendType","1"
+65,S,"GenMsgCycleTime","10"
+65,S,"GenMsgSendType","1"
+82,S,"GenMsgCycleTime","10"
+82,S,"GenMsgSendType","1"
+99,S,"GenMsgCycleTime","10"
+99,S,"GenMsgSendType","1"
+115,S,"GenMsgCycleTime","10"
+115,S,"GenMsgSendType","1"
+324,S,"GenMsgCycleTime","100"
+324,S,"GenMsgSendType","1"
+357,S,"GenMsgCycleTime","200"
+357,S,"GenMsgSendType","1"
+407,S,"GenMsgCycleTime","10"
+407,S,"GenMsgSendType","1"
+646,S,"GenMsgSendType","3"
+662,S,"GenMsgSendType","3"
+678,S,"GenMsgSendType","3"
+694,S,"GenMsgSendType","3"
+710,S,"GenMsgSendType","3"
+726,S,"GenMsgSendType","3"
+737,S,"GenMsgCycleTime","10"
+737,S,"GenMsgSendType","1"
+755,S,"GenMsgCycleTime","10"
+755,S,"GenMsgSendType","1"
+770,S,"GenMsgCycleTime","10"
+770,S,"GenMsgSendType","1"
+802,S,"GenMsgCycleTime","10"
+802,S,"GenMsgSendType","1"
+819,S,"GenMsgCycleTime","10"
+819,S,"GenMsgSendType","1"
+1121,S,"GenMsgSendType","3"
+1122,S,"GenMsgSendType","3"
+1123,S,"GenMsgSendType","3"
+1124,S,"GenMsgSendType","3"
+1125,S,"GenMsgSendType","3"
+1129,S,"GenMsgSendType","3"
+1175,S,"GenMsgCycleTime","100"
+1175,S,"GenMsgSendType","1"
+1191,S,"GenMsgCycleTime","100"
+1191,S,"GenMsgSendType","1"
+1204,S,"GenMsgCycleTime","100"
+1204,S,"GenMsgSendType","1"
+1220,S,"GenMsgCycleTime","500"
+1220,S,"GenMsgSendType","1"
+1236,S,"GenMsgCycleTime","100"
+1236,S,"GenMsgSendType","1"
+1252,S,"GenMsgCycleTime","100"
+1252,S,"GenMsgSendType","1"
+1269,S,"GenMsgCycleTime","500"
+1269,S,"GenMsgSendType","1"
+1290,S,"GenMsgSendType","3"
+1306,S,"GenMsgSendType","3"
+1552,S,"GenMsgCycleTime","100"
+1553,S,"GenMsgCycleTime","100"
+1554,S,"GenMsgCycleTime","100"
+1555,S,"GenMsgCycleTime","1000"
+1556,S,"GenMsgCycleTime","1000"
+1560,S,"GenMsgCycleTime","100"
+1601,S,"GenMsgSendType","2"
+1602,S,"GenMsgSendType","2"
+1603,S,"GenMsgSendType","2"
+1604,S,"GenMsgSendType","2"
+1605,S,"GenMsgSendType","2"
+1607,S,"GenMsgSendType","2"
+1620,S,"GenMsgCycleTime","2000"
+1620,S,"GenMsgSendType","1"
+1636,S,"GenMsgCycleTime","2000"
+1636,S,"GenMsgSendType","1"
+1650,S,"GenMsgCycleTime","500"
+1650,S,"GenMsgSendType","1"
+1667,S,"GenMsgCycleTime","500"
+1667,S,"GenMsgSendType","1"
+1685,S,"GenMsgSendType","2"
+1701,S,"GenMsgSendType","2"
+1719,S,"GenMsgCycleTime","200"
+1719,S,"GenMsgSendType","1"
+[END_PARAM_MSG_VAL]
+[START_PARAM_SIG_VAL]
+[END_PARAM_SIG_VAL]
+[END_PARAM_VAL]

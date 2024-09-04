@@ -1,0 +1,7999 @@
+{
+	"version": "created by canmatrix",
+	"baudrate": 0,
+	"nodes": {
+		"Charger": {
+			"attributes": {
+				"Manufacturer": "Podium"
+			}
+		},
+		"HVB": {},
+		"IVTMain": {
+			"attributes": {
+				"ILUsed": "Yes",
+				"Manufacturer": "Isabellenhuette",
+				"NmNode": "yes"
+			}
+		},
+		"PC": {
+			"description": "Calibration and debug tool reading the BMS firmware revision and the single cell voltages and temperatures."
+		},
+		"VCU": {
+			"attributes": {
+				"Manufacturer": "Podium"
+			}
+		}
+	},
+	"general_attributes": {},
+	"node_attributes": {
+		"ILUsed": {
+			"enum": {
+				"default": "Yes",
+				"values": [
+					"No",
+					"Yes"
+				]
+			}
+		},
+		"Manufacturer": {
+			"string": {
+				"default": "Isabellenhuette"
+			}
+		},
+		"NmNode": {
+			"enum": {
+				"default": "no",
+				"values": [
+					"no",
+					"yes"
+				]
+			}
+		},
+		"NmStationAddress": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 63
+			}
+		}
+	},
+	"message_attributes": {
+		"GenMsgCycleTime": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 1000
+			}
+		},
+		"GenMsgCycleTimeFast": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 1000
+			}
+		},
+		"GenMsgDelayTime": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 1000
+			}
+		},
+		"GenMsgILSupport": {
+			"enum": {
+				"default": "Yes",
+				"values": [
+					"No",
+					"Yes"
+				]
+			}
+		},
+		"GenMsgNrOfRepetition": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 10
+			}
+		},
+		"GenMsgSendType": {
+			"enum": {
+				"default": "NoMsgSendType",
+				"values": [
+					"Cyclic",
+					"NotUsed",
+					"NotUsed",
+					"NotUsed",
+					"NotUsed",
+					"Cyclic",
+					"NotUsed",
+					"IfActive",
+					"NoMsgSendType",
+					"NotUsed",
+					"",
+					"cyclicIfActive"
+				]
+			}
+		},
+		"GenMsgStartDelayTime": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 1000
+			}
+		},
+		"MsgPeriodMS": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 65535
+			}
+		},
+		"NmMessage": {
+			"enum": {
+				"default": "no",
+				"values": [
+					"no",
+					"yes"
+				]
+			}
+		},
+		"Quantisierung": {
+			"string": {
+				"default": "CAN"
+			}
+		}
+	},
+	"signal_attributes": {
+		"AttributSignalTest": {
+			"int": {
+				"default": 2,
+				"from": 1,
+				"to": 100
+			}
+		},
+		"GenSigInactiveValue": {
+			"int": {
+				"default": 0,
+				"from": 0,
+				"to": 100000
+			}
+		},
+		"GenSigSendType": {
+			"enum": {
+				"default": "OnWrite",
+				"values": [
+					"Cyclic",
+					"OnWrite",
+					"OnWriteWithRepetition",
+					"OnChange",
+					"OnChangeWithRepetition",
+					"IfActive",
+					"IfActiveWithRepetition",
+					"NoSigSendType",
+					"NotUsed",
+					"NotUsed",
+					"NotUsed",
+					"NotUsed",
+					"NotUsed"
+				]
+			}
+		},
+		"GenSigStartValue": {
+			"float": {
+				"default": 0,
+				"from": 0,
+				"to": 100000000000
+			}
+		},
+		"NWM_WakeupAllowed": {
+			"enum": {
+				"default": "no",
+				"values": [
+					"no",
+					"yes"
+				]
+			}
+		}
+	},
+	"messages": {
+		"HVB_RX_Actuator": {
+			"attributes": {
+				"GenMsgCycleTime": 20,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 517,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_bInvCntaNegCmd": {
+					"description": "Inverter bus negative contactor command.",
+					"start_bit": 0,
+					"size": 1,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"CLOSED": 1,
+						"OPEN": 0
+					}
+				},
+				"HVB_bInvCntaNegSt": {
+					"description": "Inverter bus negative contactor status",
+					"start_bit": 1,
+					"size": 1,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"CLOSED": 1,
+						"OPEN": 0
+					}
+				},
+				"HVB_bInvCntaPosCmd": {
+					"description": "Inverter bus psoitive contactor command.",
+					"start_bit": 4,
+					"size": 1,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"CLOSED": 1,
+						"OPEN": 0
+					}
+				},
+				"HVB_bInvCntaPosSt": {
+					"description": "Inverter bus positive contactor status",
+					"start_bit": 5,
+					"size": 1,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"CLOSED": 1,
+						"OPEN": 0
+					}
+				},
+				"HVB_bInvCntaPreCmd": {
+					"description": "Inverter bus negative contactor command.",
+					"start_bit": 2,
+					"size": 1,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"CLOSED": 1,
+						"OPEN": 0
+					}
+				},
+				"HVB_bInvCntaPreSt": {
+					"description": "Inverter bus positive contactor status",
+					"start_bit": 3,
+					"size": 1,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"CLOSED": 1,
+						"OPEN": 0
+					}
+				},
+				"HVB_noCntRoll_VCU": {
+					"description": "Rolling Counter; Generated by BMS and sent to VCU",
+					"start_bit": 51,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 15
+				},
+				"HVB_noCrc8ReqMsg_VCU": {
+					"description": "SAE J1850 CRC8 (poly: 0x1D, initial value: 0xFF, final XOR: 0xFF) calculated using the previous message bytes.",
+					"start_bit": 63,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 255
+				}
+			}
+		},
+		"HVB_RX_CurrentLimits": {
+			"attributes": {
+				"GenMsgCycleTime": 60,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 514,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_ChargeCurLimits": {
+					"description": "Maximum potential charging power limit. even in case of a protection this values is shown what might possible if no protection is on",
+					"start_bit": 7,
+					"size": 16,
+					"endianness": "big",
+					"unit": "mA",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.02,
+					"offset": 0,
+					"min": 0,
+					"max": 1310.7
+				},
+				"HVB_DischargeCurLimits": {
+					"description": "Maximum discharging power limit. even in case of a protection this values is shown what might possible if no protection is on",
+					"start_bit": 23,
+					"size": 16,
+					"endianness": "big",
+					"unit": "mA",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.02,
+					"offset": 0,
+					"min": 0,
+					"max": 1310.7
+				},
+				"HVB_pwrHvb": {
+					"description": "instantaneous net power (+ for input, - for output)",
+					"start_bit": 39,
+					"size": 16,
+					"endianness": "big",
+					"signed": true,
+					"unit": "kW",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.04,
+					"offset": 0,
+					"min": -1310.72,
+					"max": 1310.68
+				}
+			}
+		},
+		"HVB_RX_Diagnosis": {
+			"attributes": {
+				"GenMsgCycleTime": 10,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 512,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_Diag_CAN": {
+					"start_bit": 4,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_Flash": {
+					"start_bit": 0,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_RAM": {
+					"start_bit": 2,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_UART": {
+					"start_bit": 5,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_bat_curr_oc": {
+					"start_bit": 40,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_bat_curr_sna": {
+					"start_bit": 18,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_bat_uv": {
+					"start_bit": 36,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_bat_vlt_sna": {
+					"start_bit": 20,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_cell_ot": {
+					"start_bit": 33,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_cell_ov": {
+					"start_bit": 35,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_cell_sna": {
+					"start_bit": 16,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_cell_ut": {
+					"start_bit": 32,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_cell_uv": {
+					"start_bit": 34,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_eeprom": {
+					"start_bit": 1,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_imd__low_r": {
+					"start_bit": 38,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_imd_sna": {
+					"start_bit": 37,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_inv_vlt_ov": {
+					"start_bit": 41,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_inv_vlt_sna": {
+					"start_bit": 19,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Diag_vcu_can_sna": {
+					"start_bit": 17,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"HVB_Recovery_Active": {
+					"start_bit": 56,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				}
+			}
+		},
+		"HVB_RX_Insulation": {
+			"attributes": {
+				"GenMsgCycleTime": 200,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 521,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_resIsol": {
+					"description": "Battery IMD insulation resistance measure.",
+					"start_bit": 39,
+					"size": 16,
+					"endianness": "big",
+					"unit": "kOhm",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 10,
+					"offset": 0,
+					"min": 0,
+					"max": 655350
+				},
+				"HVB_stResIsol": {
+					"description": "present system main state (State Machine)",
+					"start_bit": 15,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 255,
+					"enum": {
+						"5": 0,
+						"ERROR": 0,
+						"INTERNAL": 4,
+						"OK": 1,
+						"SPEEDSTART": 3,
+						"STOPPED": 0,
+						"UNDERVOLTAGE": 2,
+						"UNKNOWN": 6
+					}
+				}
+			}
+		},
+		"HVB_RX_Measure": {
+			"attributes": {
+				"GenMsgCycleTime": 20,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 516,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_iHvb": {
+					"description": "Pack Current. Negative is discharging and positive is charging pack. Source is the current sensor.",
+					"start_bit": 7,
+					"size": 16,
+					"endianness": "big",
+					"signed": true,
+					"unit": "A",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.1,
+					"offset": 0,
+					"min": -3276.8,
+					"max": 3276.7
+				},
+				"HVB_uBus": {
+					"description": "Battery Pack Voltage. Source is the sum of all cell voltages. ",
+					"start_bit": 39,
+					"size": 16,
+					"endianness": "big",
+					"unit": "V",
+					"scale": 0.02,
+					"offset": 0,
+					"min": 0,
+					"max": 1310.7
+				},
+				"HVB_uHvb": {
+					"description": "Battery Pack Voltage. Source is the sum of all cell voltages. ",
+					"start_bit": 23,
+					"size": 16,
+					"endianness": "big",
+					"unit": "V",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.02,
+					"offset": 0,
+					"min": 0,
+					"max": 1310.7
+				}
+			}
+		},
+		"HVB_RX_SOC": {
+			"attributes": {
+				"GenMsgCycleTime": 100,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 519,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_rSoCHvb_uCellMax": {
+					"description": "Estimated state of charge based on the cell array with the highest OCV",
+					"start_bit": 7,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "%",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.04,
+					"offset": 50,
+					"min": -31.92,
+					"max": 131.88
+				},
+				"HVB_rSoCHvb_uCellMin": {
+					"description": "Estimated state of charge based on the cell array with the lowest OCV",
+					"start_bit": 39,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "%",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.04,
+					"offset": 50,
+					"min": -31.92,
+					"max": 131.88
+				}
+			}
+		},
+		"HVB_RX_SWVersion": {
+			"attributes": {
+				"GenMsgCycleTime": 1000,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 527,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_noSwVers0": {
+					"description": "Software version hash.",
+					"start_bit": 7,
+					"size": 32,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 4294967295
+				},
+				"HVB_noSwVers1": {
+					"description": "Software version hash.",
+					"start_bit": 39,
+					"size": 32,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 4294967295
+				}
+			}
+		},
+		"HVB_RX_Status": {
+			"attributes": {
+				"GenMsgCycleTime": 20,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 515,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_stInv": {
+					"description": "present state for Inverter",
+					"start_bit": 15,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 255
+				},
+				"HVB_stSys": {
+					"description": "present system main state (State Machine)",
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 255,
+					"enum": {
+						"ERROR": 5,
+						"OFF": 0,
+						"ON": 2,
+						"SHUTDOWN": 3,
+						"STARTUP": 1
+					}
+				}
+			}
+		},
+		"HVB_RX_TCell": {
+			"attributes": {
+				"GenMsgCycleTime": 100,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 520,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_tCellMax": {
+					"attributes": {
+						"GenSigStartValue": 23415
+					},
+					"description": "Highest cell temperature",
+					"start_bit": 7,
+					"size": 16,
+					"endianness": "big",
+					"unit": "degC",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.01,
+					"offset": -273.15,
+					"min": -40,
+					"max": 105
+				},
+				"HVB_tCellMean": {
+					"attributes": {
+						"GenSigStartValue": 23415
+					},
+					"description": "Average temperature of the cell bodies.",
+					"start_bit": 23,
+					"size": 16,
+					"endianness": "big",
+					"unit": "degC",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.01,
+					"offset": -273.15,
+					"min": -40,
+					"max": 105
+				},
+				"HVB_tCellMin": {
+					"attributes": {
+						"GenSigStartValue": 23415
+					},
+					"description": "Lowest measured cell body temperature.",
+					"start_bit": 39,
+					"size": 16,
+					"endianness": "big",
+					"unit": "degC",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.01,
+					"offset": -273.15,
+					"min": -40,
+					"max": 105
+				}
+			}
+		},
+		"HVB_RX_VCell": {
+			"attributes": {
+				"GenMsgCycleTime": 100,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 518,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"HVB_idxCell_uMax": {
+					"description": "Cell ID reporting the highest voltage",
+					"start_bit": 55,
+					"size": 8,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 255
+				},
+				"HVB_idxCell_uMin": {
+					"description": "Cell ID reporting the lowest voltage",
+					"start_bit": 63,
+					"size": 8,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 255
+				},
+				"HVB_uCellMax": {
+					"description": "Highest cell voltage",
+					"start_bit": 7,
+					"size": 16,
+					"endianness": "big",
+					"unit": "V",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.0001,
+					"offset": 0,
+					"min": 0,
+					"max": 6.5535
+				},
+				"HVB_uCellMean": {
+					"description": "Average cell voltage.",
+					"start_bit": 23,
+					"size": 16,
+					"endianness": "big",
+					"unit": "V",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.0001,
+					"offset": 0,
+					"min": 0,
+					"max": 6.5535
+				},
+				"HVB_uCellMin": {
+					"description": "Lowest cell voltage.",
+					"start_bit": 39,
+					"size": 16,
+					"endianness": "big",
+					"unit": "V",
+					"receivers": [
+						"Charger",
+						"VCU"
+					],
+					"scale": 0.0001,
+					"offset": 0,
+					"min": 0,
+					"max": 6.5535
+				}
+			}
+		},
+		"HVB_TX_VCUCmd": {
+			"attributes": {
+				"GenMsgCycleTime": 100,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 336,
+			"length": 2,
+			"sender": "VCU",
+			"signals": {
+				"VCU_ClrErr": {
+					"start_bit": 6,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1
+				},
+				"VCU_bAllVTReq": {
+					"description": "Enables pack all V \u0026 T message.",
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"DISABLED": 0,
+						"ENABLED": 1
+					}
+				},
+				"VCU_bBalReq": {
+					"description": "Enables pack balancing.",
+					"start_bit": 8,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"DISABLED": 0,
+						"ENABLED": 1
+					}
+				},
+				"VCU_bHvbInvReq": {
+					"description": "requested closing Inverter conductors  by VCU",
+					"start_bit": 0,
+					"size": 1,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 1,
+					"enum": {
+						"DISABLED": 0,
+						"ENABLED": 1
+					}
+				}
+			}
+		},
+		"INFO_01_DbgV": {
+			"attributes": {
+				"GenMsgCycleTime": 5,
+				"GenMsgSendType": "cyclicIfActive"
+			},
+			"id": 288,
+			"description": "Single cell voltage (multiplexed). Sent only if enabled within BMS_00_Req.",
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"BMS_eDbgVId": {
+					"description": "Single cell ID.",
+					"start_bit": 7,
+					"size": 16,
+					"endianness": "big",
+					"receivers": [
+						"PC"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 255,
+					"mux_group": {
+						"BMS_VDbgV000": {
+							"description": "Cell 0 voltage.",
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV001": {
+							"description": "Cell 1 voltage.",
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV002": {
+							"description": "Cell 2 voltage.",
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV003": {
+							"description": "Cell 3 voltage.",
+							"mux_switch": 1,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV004": {
+							"description": "Cell 4 voltage.",
+							"mux_switch": 1,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV005": {
+							"description": "Cell 5 voltage.",
+							"mux_switch": 1,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV006": {
+							"description": "Cell 6 voltage.",
+							"mux_switch": 2,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV007": {
+							"description": "Cell 7 voltage.",
+							"mux_switch": 2,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV008": {
+							"description": "Cell 8 voltage.",
+							"mux_switch": 2,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV009": {
+							"description": "Cell 9 voltage.",
+							"mux_switch": 3,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV010": {
+							"description": "Cell 10 voltage.",
+							"mux_switch": 3,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV011": {
+							"description": "Cell 11 voltage.",
+							"mux_switch": 3,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV012": {
+							"description": "Cell 12 voltage.",
+							"mux_switch": 4,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV013": {
+							"description": "Cell 13 voltage.",
+							"mux_switch": 4,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV014": {
+							"description": "Cell 14 voltage.",
+							"mux_switch": 4,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV015": {
+							"description": "Cell 15 voltage.",
+							"mux_switch": 5,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV016": {
+							"description": "Cell 16 voltage.",
+							"mux_switch": 5,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV017": {
+							"description": "Cell 17 voltage.",
+							"mux_switch": 5,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV018": {
+							"description": "Cell 18 voltage.",
+							"mux_switch": 6,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV019": {
+							"description": "Cell 19 voltage.",
+							"mux_switch": 6,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV020": {
+							"description": "Cell 20 voltage.",
+							"mux_switch": 6,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV021": {
+							"description": "Cell 21 voltage.",
+							"mux_switch": 7,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV022": {
+							"description": "Cell 22 voltage.",
+							"mux_switch": 7,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV023": {
+							"description": "Cell 23 voltage.",
+							"mux_switch": 7,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV024": {
+							"description": "Cell 24 voltage.",
+							"mux_switch": 8,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV025": {
+							"description": "Cell 25 voltage.",
+							"mux_switch": 8,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV026": {
+							"description": "Cell 26 voltage.",
+							"mux_switch": 8,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV027": {
+							"description": "Cell 27 voltage.",
+							"mux_switch": 9,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV028": {
+							"description": "Cell 28 voltage.",
+							"mux_switch": 9,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV029": {
+							"description": "Cell 29 voltage.",
+							"mux_switch": 9,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV030": {
+							"description": "Cell 30 voltage.",
+							"mux_switch": 10,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV031": {
+							"description": "Cell 31 voltage.",
+							"mux_switch": 10,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV032": {
+							"description": "Cell 32 voltage.",
+							"mux_switch": 10,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV033": {
+							"description": "Cell 33 voltage.",
+							"mux_switch": 11,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV034": {
+							"description": "Cell 34 voltage.",
+							"mux_switch": 11,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV035": {
+							"description": "Cell 35 voltage.",
+							"mux_switch": 11,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV036": {
+							"description": "Cell 36 voltage.",
+							"mux_switch": 12,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV037": {
+							"description": "Cell 37 voltage.",
+							"mux_switch": 12,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV038": {
+							"description": "Cell 38 voltage.",
+							"mux_switch": 12,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV039": {
+							"description": "Cell 39 voltage.",
+							"mux_switch": 13,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV040": {
+							"description": "Cell 40 voltage.",
+							"mux_switch": 13,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV041": {
+							"description": "Cell 41 voltage.",
+							"mux_switch": 13,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV042": {
+							"description": "Cell 42 voltage.",
+							"mux_switch": 14,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV043": {
+							"description": "Cell 43 voltage.",
+							"mux_switch": 14,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV044": {
+							"description": "Cell 44 voltage.",
+							"mux_switch": 14,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV045": {
+							"description": "Cell 45 voltage.",
+							"mux_switch": 15,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV046": {
+							"description": "Cell 46 voltage.",
+							"mux_switch": 15,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV047": {
+							"description": "Cell 47 voltage.",
+							"mux_switch": 15,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV048": {
+							"description": "Cell 48 voltage.",
+							"mux_switch": 16,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV049": {
+							"description": "Cell 49 voltage.",
+							"mux_switch": 16,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV050": {
+							"description": "Cell 50 voltage.",
+							"mux_switch": 16,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV051": {
+							"description": "Cell 51 voltage.",
+							"mux_switch": 17,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV052": {
+							"description": "Cell 52 voltage.",
+							"mux_switch": 17,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV053": {
+							"description": "Cell 53 voltage.",
+							"mux_switch": 17,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV054": {
+							"description": "Cell 54 voltage.",
+							"mux_switch": 18,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV055": {
+							"description": "Cell 55 voltage.",
+							"mux_switch": 18,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV056": {
+							"description": "Cell 56 voltage.",
+							"mux_switch": 18,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV057": {
+							"description": "Cell 57 voltage.",
+							"mux_switch": 19,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV058": {
+							"description": "Cell 58 voltage.",
+							"mux_switch": 19,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV059": {
+							"description": "Cell 59 voltage.",
+							"mux_switch": 19,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV060": {
+							"description": "Cell 60 voltage.",
+							"mux_switch": 20,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV061": {
+							"description": "Cell 61 voltage.",
+							"mux_switch": 20,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV062": {
+							"description": "Cell 62 voltage.",
+							"mux_switch": 20,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV063": {
+							"description": "Cell 63 voltage.",
+							"mux_switch": 21,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV064": {
+							"description": "Cell 64 voltage.",
+							"mux_switch": 21,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV065": {
+							"description": "Cell 65 voltage.",
+							"mux_switch": 21,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV066": {
+							"description": "Cell 66 voltage.",
+							"mux_switch": 22,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV067": {
+							"description": "Cell 67 voltage.",
+							"mux_switch": 22,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV068": {
+							"description": "Cell 68 voltage.",
+							"mux_switch": 22,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV069": {
+							"description": "Cell 69 voltage.",
+							"mux_switch": 23,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV070": {
+							"description": "Cell 70 voltage.",
+							"mux_switch": 23,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV071": {
+							"description": "Cell 71 voltage.",
+							"mux_switch": 23,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV072": {
+							"description": "Cell 72 voltage.",
+							"mux_switch": 24,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV073": {
+							"description": "Cell 73 voltage.",
+							"mux_switch": 24,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV074": {
+							"description": "Cell 74 voltage.",
+							"mux_switch": 24,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV075": {
+							"description": "Cell 75 voltage.",
+							"mux_switch": 25,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV076": {
+							"description": "Cell 76 voltage.",
+							"mux_switch": 25,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV077": {
+							"description": "Cell 77 voltage.",
+							"mux_switch": 25,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV078": {
+							"description": "Cell 78 voltage.",
+							"mux_switch": 26,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV079": {
+							"description": "Cell 79 voltage.",
+							"mux_switch": 26,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV080": {
+							"description": "Cell 80 voltage.",
+							"mux_switch": 26,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV081": {
+							"description": "Cell 81 voltage.",
+							"mux_switch": 27,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV082": {
+							"description": "Cell 82 voltage.",
+							"mux_switch": 27,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV083": {
+							"description": "Cell 83 voltage.",
+							"mux_switch": 27,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV084": {
+							"description": "Cell 84 voltage.",
+							"mux_switch": 28,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV085": {
+							"description": "Cell 85 voltage.",
+							"mux_switch": 28,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV086": {
+							"description": "Cell 86 voltage.",
+							"mux_switch": 28,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV087": {
+							"description": "Cell 87 voltage.",
+							"mux_switch": 29,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV088": {
+							"description": "Cell 88 voltage.",
+							"mux_switch": 29,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV089": {
+							"description": "Cell 89 voltage.",
+							"mux_switch": 29,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV090": {
+							"description": "Cell 90 voltage.",
+							"mux_switch": 30,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV091": {
+							"description": "Cell 91 voltage.",
+							"mux_switch": 30,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV092": {
+							"description": "Cell 92 voltage.",
+							"mux_switch": 30,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV093": {
+							"description": "Cell 93 voltage.",
+							"mux_switch": 31,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV094": {
+							"description": "Cell 94 voltage.",
+							"mux_switch": 31,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV095": {
+							"description": "Cell 95 voltage.",
+							"mux_switch": 31,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV096": {
+							"description": "Cell 96 voltage.",
+							"mux_switch": 32,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV097": {
+							"description": "Cell 97 voltage.",
+							"mux_switch": 32,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV098": {
+							"description": "Cell 98 voltage.",
+							"mux_switch": 32,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV099": {
+							"description": "Cell 99 voltage.",
+							"mux_switch": 33,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV100": {
+							"description": "Cell 100 voltage.",
+							"mux_switch": 33,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV101": {
+							"description": "Cell 101 voltage.",
+							"mux_switch": 33,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV102": {
+							"description": "Cell 102 voltage.",
+							"mux_switch": 34,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV103": {
+							"description": "Cell 103 voltage.",
+							"mux_switch": 34,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV104": {
+							"description": "Cell 104 voltage.",
+							"mux_switch": 34,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV105": {
+							"description": "Cell 105 voltage.",
+							"mux_switch": 35,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV106": {
+							"description": "Cell 106 voltage.",
+							"mux_switch": 35,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV107": {
+							"description": "Cell 107 voltage.",
+							"mux_switch": 35,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV108": {
+							"description": "Cell 108 voltage.",
+							"mux_switch": 36,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV109": {
+							"description": "Cell 109 voltage.",
+							"mux_switch": 36,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV110": {
+							"description": "Cell 110 voltage.",
+							"mux_switch": 36,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV111": {
+							"description": "Cell 111 voltage.",
+							"mux_switch": 37,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV112": {
+							"description": "Cell 112 voltage.",
+							"mux_switch": 37,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV113": {
+							"description": "Cell 113 voltage.",
+							"mux_switch": 37,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV114": {
+							"description": "Cell 114 voltage.",
+							"mux_switch": 38,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV115": {
+							"description": "Cell 115 voltage.",
+							"mux_switch": 38,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV116": {
+							"description": "Cell 116 voltage.",
+							"mux_switch": 38,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV117": {
+							"description": "Cell 117 voltage.",
+							"mux_switch": 39,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV118": {
+							"description": "Cell 118 voltage.",
+							"mux_switch": 39,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV119": {
+							"description": "Cell 119 voltage.",
+							"mux_switch": 39,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV120": {
+							"description": "Cell 120 voltage.",
+							"mux_switch": 40,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV121": {
+							"description": "Cell 121 voltage.",
+							"mux_switch": 40,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV122": {
+							"description": "Cell 122 voltage.",
+							"mux_switch": 40,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV123": {
+							"description": "Cell 123 voltage.",
+							"mux_switch": 41,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV124": {
+							"description": "Cell 124 voltage.",
+							"mux_switch": 41,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV125": {
+							"description": "Cell 125 voltage.",
+							"mux_switch": 41,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV126": {
+							"description": "Cell 126 voltage.",
+							"mux_switch": 42,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV127": {
+							"description": "Cell 127 voltage.",
+							"mux_switch": 42,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV128": {
+							"description": "Cell 128 voltage.",
+							"mux_switch": 42,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV129": {
+							"description": "Cell 129 voltage.",
+							"mux_switch": 43,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV130": {
+							"description": "Cell 130 voltage.",
+							"mux_switch": 43,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV131": {
+							"description": "Cell 131 voltage.",
+							"mux_switch": 43,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV132": {
+							"description": "Cell 132 voltage.",
+							"mux_switch": 44,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV133": {
+							"description": "Cell 133 voltage.",
+							"mux_switch": 44,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV134": {
+							"description": "Cell 134 voltage.",
+							"mux_switch": 44,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV135": {
+							"description": "Cell 135 voltage.",
+							"mux_switch": 45,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV136": {
+							"description": "Cell 136 voltage.",
+							"mux_switch": 45,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV137": {
+							"description": "Cell 137 voltage.",
+							"mux_switch": 45,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV138": {
+							"description": "Cell 138 voltage.",
+							"mux_switch": 46,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV139": {
+							"description": "Cell 139 voltage.",
+							"mux_switch": 46,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV140": {
+							"description": "Cell 140 voltage.",
+							"mux_switch": 46,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV141": {
+							"description": "Cell 141 voltage.",
+							"mux_switch": 47,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV142": {
+							"description": "Cell 142 voltage.",
+							"mux_switch": 47,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV143": {
+							"description": "Cell 143 voltage.",
+							"mux_switch": 47,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV144": {
+							"description": "Cell 144 voltage.",
+							"mux_switch": 48,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV145": {
+							"description": "Cell 145 voltage.",
+							"mux_switch": 48,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV146": {
+							"description": "Cell 146 voltage.",
+							"mux_switch": 48,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV147": {
+							"description": "Cell 147 voltage.",
+							"mux_switch": 49,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV148": {
+							"description": "Cell 148 voltage.",
+							"mux_switch": 49,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV149": {
+							"description": "Cell 149 voltage.",
+							"mux_switch": 49,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV150": {
+							"description": "Cell 150 voltage.",
+							"mux_switch": 50,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV151": {
+							"description": "Cell 151 voltage.",
+							"mux_switch": 50,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV152": {
+							"description": "Cell 152 voltage.",
+							"mux_switch": 50,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV153": {
+							"description": "Cell 153 voltage.",
+							"mux_switch": 51,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV154": {
+							"description": "Cell 154 voltage.",
+							"mux_switch": 51,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV155": {
+							"description": "Cell 155 voltage.",
+							"mux_switch": 51,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV156": {
+							"description": "Cell 156 voltage.",
+							"mux_switch": 52,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV157": {
+							"description": "Cell 157 voltage.",
+							"mux_switch": 52,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV158": {
+							"description": "Cell 158 voltage.",
+							"mux_switch": 52,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV159": {
+							"description": "Cell 159 voltage.",
+							"mux_switch": 53,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV160": {
+							"description": "Cell 160 voltage.",
+							"mux_switch": 53,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV161": {
+							"description": "Cell 161 voltage.",
+							"mux_switch": 53,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV162": {
+							"description": "Cell 162 voltage.",
+							"mux_switch": 54,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV163": {
+							"description": "Cell 163 voltage.",
+							"mux_switch": 54,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV164": {
+							"description": "Cell 164 voltage.",
+							"mux_switch": 54,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV165": {
+							"description": "Cell 165 voltage.",
+							"mux_switch": 55,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV166": {
+							"description": "Cell 166 voltage.",
+							"mux_switch": 55,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV167": {
+							"description": "Cell 167 voltage.",
+							"mux_switch": 55,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV168": {
+							"description": "Cell 168 voltage.",
+							"mux_switch": 56,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV169": {
+							"description": "Cell 169 voltage.",
+							"mux_switch": 56,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV170": {
+							"description": "Cell 170 voltage.",
+							"mux_switch": 56,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV171": {
+							"description": "Cell 171 voltage.",
+							"mux_switch": 57,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV172": {
+							"description": "Cell 172 voltage.",
+							"mux_switch": 57,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV173": {
+							"description": "Cell 173 voltage.",
+							"mux_switch": 57,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV174": {
+							"description": "Cell 174 voltage.",
+							"mux_switch": 58,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV175": {
+							"description": "Cell 175 voltage.",
+							"mux_switch": 58,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV176": {
+							"description": "Cell 176 voltage.",
+							"mux_switch": 58,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV177": {
+							"description": "Cell 177 voltage.",
+							"mux_switch": 59,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV178": {
+							"description": "Cell 178 voltage.",
+							"mux_switch": 59,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV179": {
+							"description": "Cell 179 voltage.",
+							"mux_switch": 59,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV180": {
+							"description": "Cell 180 voltage.",
+							"mux_switch": 60,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV181": {
+							"description": "Cell 181 voltage.",
+							"mux_switch": 60,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV182": {
+							"description": "Cell 182 voltage.",
+							"mux_switch": 60,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV183": {
+							"description": "Cell 183 voltage.",
+							"mux_switch": 61,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV184": {
+							"description": "Cell 184 voltage.",
+							"mux_switch": 61,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV185": {
+							"description": "Cell 185 voltage.",
+							"mux_switch": 61,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV186": {
+							"description": "Cell 186 voltage.",
+							"mux_switch": 62,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV187": {
+							"description": "Cell 187 voltage.",
+							"mux_switch": 62,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV188": {
+							"description": "Cell 188 voltage.",
+							"mux_switch": 62,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV189": {
+							"description": "Cell 189 voltage.",
+							"mux_switch": 63,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV190": {
+							"description": "Cell 190 voltage.",
+							"mux_switch": 63,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV191": {
+							"description": "Cell 191 voltage.",
+							"mux_switch": 63,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV192": {
+							"description": "Cell 192 voltage.",
+							"mux_switch": 64,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV193": {
+							"description": "Cell 193 voltage.",
+							"mux_switch": 64,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV194": {
+							"description": "Cell 194 voltage.",
+							"mux_switch": 64,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV195": {
+							"description": "Cell 195 voltage.",
+							"mux_switch": 65,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV196": {
+							"description": "Cell 196 voltage.",
+							"mux_switch": 65,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV197": {
+							"description": "Cell 197 voltage.",
+							"mux_switch": 65,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV198": {
+							"description": "Cell 198 voltage.",
+							"mux_switch": 66,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV199": {
+							"description": "Cell 199 voltage.",
+							"mux_switch": 66,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV200": {
+							"description": "Cell 200 voltage.",
+							"mux_switch": 66,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV201": {
+							"description": "Cell 201 voltage.",
+							"mux_switch": 67,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV202": {
+							"description": "Cell 202 voltage.",
+							"mux_switch": 67,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV203": {
+							"description": "Cell 203 voltage.",
+							"mux_switch": 67,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV204": {
+							"description": "Cell 204 voltage.",
+							"mux_switch": 68,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV205": {
+							"description": "Cell 205 voltage.",
+							"mux_switch": 68,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV206": {
+							"description": "Cell 206 voltage.",
+							"mux_switch": 68,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV207": {
+							"description": "Cell 207 voltage.",
+							"mux_switch": 69,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV208": {
+							"description": "Cell 208 voltage.",
+							"mux_switch": 69,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV209": {
+							"description": "Cell 209 voltage.",
+							"mux_switch": 69,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV210": {
+							"description": "Cell 210 voltage.",
+							"mux_switch": 70,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV211": {
+							"description": "Cell 211 voltage.",
+							"mux_switch": 70,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV212": {
+							"description": "Cell 212 voltage.",
+							"mux_switch": 70,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV213": {
+							"description": "Cell 213 voltage.",
+							"mux_switch": 71,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV214": {
+							"description": "Cell 214 voltage.",
+							"mux_switch": 71,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV215": {
+							"description": "Cell 215 voltage.",
+							"mux_switch": 71,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV216": {
+							"description": "Cell 216 voltage.",
+							"mux_switch": 72,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV217": {
+							"description": "Cell 217 voltage.",
+							"mux_switch": 72,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV218": {
+							"description": "Cell 218 voltage.",
+							"mux_switch": 72,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV219": {
+							"description": "Cell 219 voltage.",
+							"mux_switch": 73,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV220": {
+							"description": "Cell 220 voltage.",
+							"mux_switch": 73,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV221": {
+							"description": "Cell 221 voltage.",
+							"mux_switch": 73,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV222": {
+							"description": "Cell 222 voltage.",
+							"mux_switch": 74,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV223": {
+							"description": "Cell 223 voltage.",
+							"mux_switch": 74,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV224": {
+							"description": "Cell 224 voltage.",
+							"mux_switch": 74,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV225": {
+							"description": "Cell 225 voltage.",
+							"mux_switch": 75,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV226": {
+							"description": "Cell 226 voltage.",
+							"mux_switch": 75,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV227": {
+							"description": "Cell 227 voltage.",
+							"mux_switch": 75,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV228": {
+							"description": "Cell 228 voltage.",
+							"mux_switch": 76,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV229": {
+							"description": "Cell 229 voltage.",
+							"mux_switch": 76,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV230": {
+							"description": "Cell 230 voltage.",
+							"mux_switch": 76,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV231": {
+							"description": "Cell 231 voltage.",
+							"mux_switch": 77,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV232": {
+							"description": "Cell 232 voltage.",
+							"mux_switch": 77,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV233": {
+							"description": "Cell 233 voltage.",
+							"mux_switch": 77,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV234": {
+							"description": "Cell 234 voltage.",
+							"mux_switch": 78,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV235": {
+							"description": "Cell 235 voltage.",
+							"mux_switch": 78,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV236": {
+							"description": "Cell 236 voltage.",
+							"mux_switch": 78,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV237": {
+							"description": "Cell 237 voltage.",
+							"mux_switch": 79,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV238": {
+							"description": "Cell 238 voltage.",
+							"mux_switch": 79,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV239": {
+							"description": "Cell 239 voltage.",
+							"mux_switch": 79,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV240": {
+							"description": "Cell 240 voltage.",
+							"mux_switch": 80,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV241": {
+							"description": "Cell 241 voltage.",
+							"mux_switch": 80,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV242": {
+							"description": "Cell 242 voltage.",
+							"mux_switch": 80,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV243": {
+							"description": "Cell 243 voltage.",
+							"mux_switch": 81,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV244": {
+							"description": "Cell 244 voltage.",
+							"mux_switch": 81,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV245": {
+							"description": "Cell 245 voltage.",
+							"mux_switch": 81,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV246": {
+							"description": "Cell 246 voltage.",
+							"mux_switch": 82,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV247": {
+							"description": "Cell 247 voltage.",
+							"mux_switch": 82,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV248": {
+							"description": "Cell 248 voltage.",
+							"mux_switch": 82,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV249": {
+							"description": "Cell 249 voltage.",
+							"mux_switch": 83,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV250": {
+							"description": "Cell 250 voltage.",
+							"mux_switch": 83,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV251": {
+							"description": "Cell 251 voltage.",
+							"mux_switch": 83,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV252": {
+							"description": "Cell 252 voltage.",
+							"mux_switch": 84,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV253": {
+							"description": "Cell 253 voltage.",
+							"mux_switch": 84,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV254": {
+							"description": "Cell 254 voltage.",
+							"mux_switch": 84,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						},
+						"BMS_VDbgV255": {
+							"description": "Cell 255 voltage.",
+							"mux_switch": 85,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "V",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.001,
+							"offset": 0,
+							"min": 0,
+							"max": 4.95
+						}
+					}
+				}
+			}
+		},
+		"INFO_02_DbgT": {
+			"attributes": {
+				"GenMsgCycleTime": 10,
+				"GenMsgSendType": "cyclicIfActive"
+			},
+			"id": 289,
+			"description": "Single thermistor temperature (multiplexed). Sent only if enabled within BMS_00_Req.",
+			"length": 8,
+			"sender": "HVB",
+			"signals": {
+				"BMS_eDbgTId": {
+					"description": "Single thermistor ID.",
+					"start_bit": 7,
+					"size": 16,
+					"endianness": "big",
+					"receivers": [
+						"PC"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 127,
+					"mux_group": {
+						"BMS_TDbgT000": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 0 temperature.",
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT001": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 1 temperature.",
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT002": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 2 temperature.",
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT003": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 3 temperature.",
+							"mux_switch": 1,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT004": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 4 temperature.",
+							"mux_switch": 1,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT005": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 5 temperature.",
+							"mux_switch": 1,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT006": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 6 temperature.",
+							"mux_switch": 2,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT007": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 7 temperature.",
+							"mux_switch": 2,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT008": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 8 temperature.",
+							"mux_switch": 2,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT009": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 9 temperature.",
+							"mux_switch": 3,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT010": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 10 temperature.",
+							"mux_switch": 3,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT011": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 11 temperature.",
+							"mux_switch": 3,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT012": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 12 temperature.",
+							"mux_switch": 4,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT013": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 13 temperature.",
+							"mux_switch": 4,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT014": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 14 temperature.",
+							"mux_switch": 4,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT015": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 15 temperature.",
+							"mux_switch": 5,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT016": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 16 temperature.",
+							"mux_switch": 5,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT017": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 17 temperature.",
+							"mux_switch": 5,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT018": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 18 temperature.",
+							"mux_switch": 6,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT019": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 19 temperature.",
+							"mux_switch": 6,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT020": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 20 temperature.",
+							"mux_switch": 6,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT021": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 21 temperature.",
+							"mux_switch": 7,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT022": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 22 temperature.",
+							"mux_switch": 7,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT023": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 23 temperature.",
+							"mux_switch": 7,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT024": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 24 temperature.",
+							"mux_switch": 8,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT025": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 25 temperature.",
+							"mux_switch": 8,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT026": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 26 temperature.",
+							"mux_switch": 8,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT027": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 27 temperature.",
+							"mux_switch": 9,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT028": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 28 temperature.",
+							"mux_switch": 9,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT029": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 29 temperature.",
+							"mux_switch": 9,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT030": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 30 temperature.",
+							"mux_switch": 10,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT031": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 31 temperature.",
+							"mux_switch": 10,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT032": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 32 temperature.",
+							"mux_switch": 10,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT033": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 33 temperature.",
+							"mux_switch": 11,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT034": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 34 temperature.",
+							"mux_switch": 11,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT035": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 35 temperature.",
+							"mux_switch": 11,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT036": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 36 temperature.",
+							"mux_switch": 12,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT037": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 37 temperature.",
+							"mux_switch": 12,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT038": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 38 temperature.",
+							"mux_switch": 12,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT039": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 39 temperature.",
+							"mux_switch": 13,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT040": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 40 temperature.",
+							"mux_switch": 13,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT041": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 41 temperature.",
+							"mux_switch": 13,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT042": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 42 temperature.",
+							"mux_switch": 14,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT043": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 43 temperature.",
+							"mux_switch": 14,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT044": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 44 temperature.",
+							"mux_switch": 14,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT045": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 45 temperature.",
+							"mux_switch": 15,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT046": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 46 temperature.",
+							"mux_switch": 15,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT047": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 47 temperature.",
+							"mux_switch": 15,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT048": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 48 temperature.",
+							"mux_switch": 16,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT049": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 49 temperature.",
+							"mux_switch": 16,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT050": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 50 temperature.",
+							"mux_switch": 16,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT051": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 51 temperature.",
+							"mux_switch": 17,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT052": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 52 temperature.",
+							"mux_switch": 17,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT053": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 53 temperature.",
+							"mux_switch": 17,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT054": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 54 temperature.",
+							"mux_switch": 18,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT055": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 55 temperature.",
+							"mux_switch": 18,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT056": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 56 temperature.",
+							"mux_switch": 18,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT057": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 57 temperature.",
+							"mux_switch": 19,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT058": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 58 temperature.",
+							"mux_switch": 19,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT059": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 59 temperature.",
+							"mux_switch": 19,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT060": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 60 temperature.",
+							"mux_switch": 20,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT061": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 61 temperature.",
+							"mux_switch": 20,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT062": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 62 temperature.",
+							"mux_switch": 20,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT063": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 63 temperature.",
+							"mux_switch": 21,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT064": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 64 temperature.",
+							"mux_switch": 21,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT065": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 65 temperature.",
+							"mux_switch": 21,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT066": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 66 temperature.",
+							"mux_switch": 22,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT067": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 67 temperature.",
+							"mux_switch": 22,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT068": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 68 temperature.",
+							"mux_switch": 22,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT069": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 69 temperature.",
+							"mux_switch": 23,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT070": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 70 temperature.",
+							"mux_switch": 23,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT071": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 71 temperature.",
+							"mux_switch": 23,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT072": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 72 temperature.",
+							"mux_switch": 24,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT073": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 73 temperature.",
+							"mux_switch": 24,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT074": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 74 temperature.",
+							"mux_switch": 24,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT075": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 75 temperature.",
+							"mux_switch": 25,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT076": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 76 temperature.",
+							"mux_switch": 25,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT077": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 77 temperature.",
+							"mux_switch": 25,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT078": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 78 temperature.",
+							"mux_switch": 26,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT079": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 79 temperature.",
+							"mux_switch": 26,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT080": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 80 temperature.",
+							"mux_switch": 26,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT081": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 81 temperature.",
+							"mux_switch": 27,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT082": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 82 temperature.",
+							"mux_switch": 27,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT083": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 83 temperature.",
+							"mux_switch": 27,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT084": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 84 temperature.",
+							"mux_switch": 28,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT085": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 85 temperature.",
+							"mux_switch": 28,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT086": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 86 temperature.",
+							"mux_switch": 28,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT087": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 87 temperature.",
+							"mux_switch": 29,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT088": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 88 temperature.",
+							"mux_switch": 29,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT089": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 89 temperature.",
+							"mux_switch": 29,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT090": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 90 temperature.",
+							"mux_switch": 30,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT091": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 91 temperature.",
+							"mux_switch": 30,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT092": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 92 temperature.",
+							"mux_switch": 30,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT093": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 93 temperature.",
+							"mux_switch": 31,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT094": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 94 temperature.",
+							"mux_switch": 31,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT095": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 95 temperature.",
+							"mux_switch": 31,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT096": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 96 temperature.",
+							"mux_switch": 32,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT097": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 97 temperature.",
+							"mux_switch": 32,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT098": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 98 temperature.",
+							"mux_switch": 32,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT099": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 99 temperature.",
+							"mux_switch": 33,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT100": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 100 temperature.",
+							"mux_switch": 33,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT101": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 101 temperature.",
+							"mux_switch": 33,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT102": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 102 temperature.",
+							"mux_switch": 34,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT103": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 103 temperature.",
+							"mux_switch": 34,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT104": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 104 temperature.",
+							"mux_switch": 34,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT105": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 105 temperature.",
+							"mux_switch": 35,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT106": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 106 temperature.",
+							"mux_switch": 35,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT107": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 107 temperature.",
+							"mux_switch": 35,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT108": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 108 temperature.",
+							"mux_switch": 36,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT109": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 109 temperature.",
+							"mux_switch": 36,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT110": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 110 temperature.",
+							"mux_switch": 36,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT111": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 111 temperature.",
+							"mux_switch": 37,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT112": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 112 temperature.",
+							"mux_switch": 37,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT113": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 113 temperature.",
+							"mux_switch": 37,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT114": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 114 temperature.",
+							"mux_switch": 38,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT115": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 115 temperature.",
+							"mux_switch": 38,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT116": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 116 temperature.",
+							"mux_switch": 38,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT117": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 117 temperature.",
+							"mux_switch": 39,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT118": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 118 temperature.",
+							"mux_switch": 39,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT119": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 119 temperature.",
+							"mux_switch": 39,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT120": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 120 temperature.",
+							"mux_switch": 40,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT121": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 121 temperature.",
+							"mux_switch": 40,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT122": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 122 temperature.",
+							"mux_switch": 40,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT123": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 123 temperature.",
+							"mux_switch": 41,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT124": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 124 temperature.",
+							"mux_switch": 41,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT125": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 125 temperature.",
+							"mux_switch": 41,
+							"start_bit": 55,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT126": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 126 temperature.",
+							"mux_switch": 42,
+							"start_bit": 23,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						},
+						"BMS_TDbgT127": {
+							"attributes": {
+								"GenSigStartValue": 23315
+							},
+							"description": "Thermistor 127 temperature.",
+							"mux_switch": 42,
+							"start_bit": 39,
+							"size": 16,
+							"endianness": "big",
+							"unit": "degC",
+							"receivers": [
+								"PC"
+							],
+							"scale": 0.01,
+							"offset": -273.15,
+							"min": -40,
+							"max": 105
+						}
+					}
+				}
+			}
+		},
+		"IVTMain_Msg_Cmd": {
+			"attributes": {
+				"GenMsgSendType": "IfActive",
+				"NmMessage": "yes"
+			},
+			"id": 1041,
+			"length": 8,
+			"sender": "HVB",
+			"signals": {}
+		},
+		"IVTMain_Msg_Response": {
+			"attributes": {
+				"GenMsgSendType": "NotUsed"
+			},
+			"id": 1297,
+			"length": 8,
+			"sender": "IVTMain",
+			"signals": {}
+		},
+		"IVTMain_Msg_Result_As": {
+			"attributes": {
+				"GenMsgCycleTime": 100,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1319,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_As": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 6
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 6,
+					"max": 6,
+					"enum": {
+						"Vt_Result_As": 6
+					}
+				},
+				"IVTMain_MsgCount_Result_As": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_As": {
+					"attributes": {
+						"GenSigStartValue": 0
+					},
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "As",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": -21474836478,
+					"max": 2147483647
+				},
+				"IVTMain_Result_As_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_As_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_As_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_As_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		},
+		"IVTMain_Msg_Result_I": {
+			"attributes": {
+				"GenMsgCycleTime": 20,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1313,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_I": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 0
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0,
+					"enum": {
+						"Vt_Result_I": 0
+					}
+				},
+				"IVTMain_MsgCount_Result_I": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_I": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 0
+					},
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "mA",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": -2147483648,
+					"max": 2147483647
+				},
+				"IVTMain_Result_I_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_I_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_I_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_I_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		},
+		"IVTMain_Msg_Result_T": {
+			"attributes": {
+				"GenMsgCycleTime": 100,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1317,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_T": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 4
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 4,
+					"max": 4,
+					"enum": {
+						"Vt_Result_T": 4
+					}
+				},
+				"IVTMain_MsgCount_Result_T": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_T": {
+					"attributes": {
+						"GenSigStartValue": 0
+					},
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "\ufffdC",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 0.1,
+					"offset": 0,
+					"min": -2147483648,
+					"max": 2147483647
+				},
+				"IVTMain_Result_T_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_T_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_T_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_T_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		},
+		"IVTMain_Msg_Result_U1": {
+			"attributes": {
+				"GenMsgCycleTime": 60,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1314,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_U1": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 1
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 1,
+					"max": 1,
+					"enum": {
+						"Vt_Result_U1": 1
+					}
+				},
+				"IVTMain_MsgCount_Result_U1": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U1": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType"
+					},
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "mV",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": -2147483648,
+					"max": 2147483647
+				},
+				"IVTMain_Result_U1_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U1_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U1_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U1_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		},
+		"IVTMain_Msg_Result_U2": {
+			"attributes": {
+				"GenMsgCycleTime": 60,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1315,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_U2": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 2
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 2,
+					"max": 2,
+					"enum": {
+						"Vt_Result_U2": 2
+					}
+				},
+				"IVTMain_MsgCount_Result_U2": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U2": {
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "mV",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": -2147483648,
+					"max": 2147483647
+				},
+				"IVTMain_Result_U2_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U2_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U2_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U2_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		},
+		"IVTMain_Msg_Result_U3": {
+			"attributes": {
+				"GenMsgCycleTime": 60,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1316,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_U3": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 3
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 3,
+					"max": 3,
+					"enum": {
+						"Vt_Result_U3": 3
+					}
+				},
+				"IVTMain_MsgCount_Result_U3": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U3": {
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "mV",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": -2147483648,
+					"max": 2147483647
+				},
+				"IVTMain_Result_U3_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U3_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U3_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_U3_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		},
+		"IVTMain_Msg_Result_W": {
+			"attributes": {
+				"GenMsgCycleTime": 60,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1318,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_W": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 5
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 5,
+					"max": 5,
+					"enum": {
+						"Vt_Result_W": 5
+					}
+				},
+				"IVTMain_MsgCount_Result_W": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_W": {
+					"attributes": {
+						"GenSigStartValue": 0
+					},
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "W",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": -2147483648,
+					"max": 2147483647
+				},
+				"IVTMain_Result_W_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_W_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_W_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_W_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		},
+		"IVTMain_Msg_Result_Wh": {
+			"attributes": {
+				"GenMsgCycleTime": 100,
+				"GenMsgSendType": "Cyclic"
+			},
+			"id": 1320,
+			"length": 6,
+			"sender": "IVTMain",
+			"signals": {
+				"IVTMain_ID_Result_Wh": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 7
+					},
+					"start_bit": 7,
+					"size": 8,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 7,
+					"max": 7,
+					"enum": {
+						"Vt_Result_Wh": 7
+					}
+				},
+				"IVTMain_MsgCount_Result_Wh": {
+					"start_bit": 11,
+					"size": 4,
+					"endianness": "big",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_Wh": {
+					"attributes": {
+						"GenSigSendType": "NoSigSendType",
+						"GenSigStartValue": 0
+					},
+					"start_bit": 23,
+					"size": 32,
+					"endianness": "big",
+					"signed": true,
+					"unit": "Wh",
+					"receivers": [
+						"HVB"
+					],
+					"scale": 1,
+					"offset": 0,
+					"min": -2147483648,
+					"max": 2147483647
+				},
+				"IVTMain_Result_Wh_Channel_Error": {
+					"start_bit": 13,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_Wh_Meas_Err": {
+					"start_bit": 14,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_Wh_OCS": {
+					"start_bit": 12,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				},
+				"IVTMain_Result_Wh_System_Error": {
+					"start_bit": 15,
+					"size": 1,
+					"endianness": "big",
+					"scale": 1,
+					"offset": 0,
+					"min": 0,
+					"max": 0
+				}
+			}
+		}
+	}
+}

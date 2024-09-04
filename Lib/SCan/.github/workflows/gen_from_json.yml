@@ -1,0 +1,129 @@
+name: Generate Utils From JSON
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      -  "SC24/**.json"
+
+  workflow_dispatch:
+
+env:
+  JSON_FILES_DIR: ./SC24
+  PYTHON_VERSION: '3.10'
+  ARTIFACT_DIR: tmp/artifacts
+
+jobs:
+  list-json-files:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select JSON files
+        id: set-matrix
+        run: echo "matrix=$(find $JSON_FILES_DIR | egrep '\.json$' | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+          
+  sync-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Merge master into build
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: master
+          target_branch: build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: Merge master into build
+          
+  generate:
+    needs: [list-json-files, sync-branch]
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        json-file: ${{ fromJson(needs.list-json-files.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+          
+      - name: Get filenames
+        run: |
+          mkdir -p ${{ env.ARTIFACT_DIR }}
+          mkdir -p ${{ env.ARTIFACT_DIR }}/c_source
+          path=$(echo ${{ matrix.json-file }} | cut -d. -f2)
+          file=$(basename $path)
+          lcPath=${path,,}
+          lcFile=$(basename $lcPath)
+          dir=$(dirname $path)
+          echo "OUT_DIR=$(echo $dir | cut -c 2-)" >> $GITHUB_ENV
+          echo "FILENAME=$(echo $file)" >> $GITHUB_ENV
+          echo "DBC_FILE=$(echo ${{ env.ARTIFACT_DIR }})/$(echo $file).dbc" >> $GITHUB_ENV
+          echo "C_FILE=$(echo $lcFile).c" >> $GITHUB_ENV
+          echo "H_FILE=$(echo $lcFile).h" >> $GITHUB_ENV
+          echo "DBF_FILE=$(echo ${{ env.ARTIFACT_DIR }})/$(echo $file).dbf" >> $GITHUB_ENV
+          echo "XLSX_FILE=$(echo ${{ env.ARTIFACT_DIR }})/$(echo $file).xlsx" >> $GITHUB_ENV
+          echo "CSV_FILE=$(echo ${{ env.ARTIFACT_DIR }})/$(echo $file).csv" >> $GITHUB_ENV
+        
+      - name: Download latest jsodbc release
+        uses: robinraju/release-downloader@v1.9
+        with:
+          repository: "squadracorsepolito/jsondbc"
+          latest: true
+          fileName: "jsondbc_Linux_x86_64.tar.gz"
+          extract: true
+          out-file-path: "jsondbc"
+          
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Cache pip packages
+        id: pip-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-python${{ env.PYTHON_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+          
+      - name: Install cantools
+        run: python3 -m pip install cantools
+        
+      - name: Install canmatrix
+        run: python3 -m pip install canmatrix[xlsx]
+          
+      - name: Convert JSON file to dbc
+        run: ./jsondbc/jsondbc convert --in ${{ matrix.json-file }} --out ${{ env.DBC_FILE }}
+        
+      - name: Generate .c .h
+        run: |
+          python3 -m cantools generate_c_source ${{ env.DBC_FILE }}
+          mv ${{ env.C_FILE }} ${{ env.ARTIFACT_DIR }}/c_source
+          mv ${{ env.H_FILE }} ${{ env.ARTIFACT_DIR }}/c_source
+        
+      - name: Convert dbc to dbf
+        run: canconvert ${{ env.DBC_FILE }} ${{ env.DBF_FILE }}
+        
+      - name: Convert dbc to xlsx
+        run: canconvert ${{ env.DBC_FILE }} ${{ env.XLSX_FILE }}
+        
+      - name: Convert dbc to csv
+        run: canconvert ${{ env.DBC_FILE }} ${{ env.CSV_FILE }}
+
+      - name: Print dir
+        run: ls -R
+      
+      - name: Push to build branch
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: build
+          FOLDER: ${{ env.ARTIFACT_DIR }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_DIR: ${{ env.OUT_DIR }}/artifacts/${{ env.FILENAME }}
+          SKIP_EMPTY_COMMITS: true
+          MESSAGE: generated from ${{ matrix.json-file }} at {sha}
